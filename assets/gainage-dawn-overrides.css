@@ -1,0 +1,121 @@
+/* ==========================================================================
+   GAINAGE Dawn Overrides
+   Neutralise Dawn's default styling to match GAINAGE design system
+   ========================================================================== */
+
+/* Force black bg / white text everywhere */
+.gainage-theme,
+.gainage-theme body {
+  background-color: var(--g-color-bg) !important;
+  color: var(--g-color-text) !important;
+}
+
+/* Override Dawn colour scheme vars */
+.gainage-theme :root,
+.gainage-theme [class*="color-"] {
+  --color-background: 0, 0, 0;
+  --gradient-background: #000000;
+  --color-foreground: 255, 255, 255;
+  --color-button: 255, 165, 0;
+  --color-button-text: 0, 0, 0;
+  --color-secondary-button: 0, 0, 0;
+  --color-secondary-button-text: 255, 255, 255;
+  --color-link: 255, 165, 0;
+  --color-badge-foreground: 255, 255, 255;
+  --color-badge-background: 0, 0, 0;
+  --color-badge-border: 255, 255, 255;
+}
+
+/* Override Dawn body text opacity */
+.gainage-theme body,
+.gainage-theme .gradient {
+  color: var(--g-color-text);
+  background-color: var(--g-color-bg);
+}
+
+/* Kill Dawn border-radius everywhere */
+.gainage-theme {
+  --buttons-radius: 0px;
+  --buttons-radius-outset: 0px;
+  --inputs-radius: 0px;
+  --inputs-radius-outset: 0px;
+  --variant-pills-radius: 0px;
+  --media-radius: 0px;
+  --product-card-corner-radius: 0rem;
+  --collection-card-corner-radius: 0rem;
+  --badge-corner-radius: 0rem;
+  --popup-corner-radius: 0px;
+}
+
+/* Override Dawn button styles */
+.gainage-theme .button,
+.gainage-theme .shopify-challenge__button {
+  font-family: var(--g-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border-radius: 0;
+  background-color: var(--g-color-bg);
+  color: var(--g-color-accent);
+  border: 1px solid var(--g-color-accent);
+  transition: border-color 150ms ease;
+}
+
+.gainage-theme .button:hover,
+.gainage-theme .shopify-challenge__button:hover {
+  border-color: var(--g-color-accent-hover);
+  color: var(--g-color-accent-hover);
+  background-color: var(--g-color-bg);
+}
+
+/* Override Dawn form inputs */
+.gainage-theme .field__input,
+.gainage-theme .select__select,
+.gainage-theme .customer input,
+.gainage-theme textarea {
+  background-color: var(--g-color-bg);
+  color: var(--g-color-text);
+  border: none;
+  border-bottom: 1px solid var(--g-color-text);
+  border-radius: 0;
+  font-family: var(--g-font-body);
+}
+
+.gainage-theme .field__input:focus,
+.gainage-theme .select__select:focus,
+.gainage-theme textarea:focus {
+  border-bottom-color: var(--g-color-accent);
+  box-shadow: none;
+  outline: none;
+}
+
+/* Override Dawn link styles */
+.gainage-theme a:not(.button) {
+  color: var(--g-color-text);
+}
+
+/* Override Dawn heading font */
+.gainage-theme h1,
+.gainage-theme h2,
+.gainage-theme h3,
+.gainage-theme h4,
+.gainage-theme h5,
+.gainage-theme h6,
+.gainage-theme .h0,
+.gainage-theme .h1,
+.gainage-theme .h2,
+.gainage-theme .h3 {
+  font-family: var(--g-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--g-color-text);
+}
+
+/* Remove Dawn section padding defaults where GAINAGE overrides */
+.gainage-theme .section-template--*:first-child {
+  padding-top: 0;
+}
+
+/* Hide Dawn announcement bar if present */
+.gainage-theme .announcement-bar {
+  display: none;
+}

@@ -1,0 +1,19 @@
+{%- comment -%}
+  GAINAGE Product Specs — Centered uppercase bullet list
+  Usage: {% render 'gainage-product-specs', product: product %}
+  Reads from product.metafields.custom.specs (multi-line text) or falls back to product description
+{%- endcomment -%}
+
+{%- assign specs_text = product.metafields.custom.specs -%}
+
+{%- if specs_text != blank -%}
+  <div class="gainage-specs">
+    {%- assign specs_lines = specs_text | strip | newline_to_br | split: '<br />' -%}
+    {%- for line in specs_lines -%}
+      {%- assign trimmed = line | strip -%}
+      {%- if trimmed != blank -%}
+        <p class="gainage-specs__line g-body">{{ trimmed }}</p>
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+{%- endif -%}

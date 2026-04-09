@@ -1,0 +1,25 @@
+{%- comment -%}
+  GAINAGE Buy Form — ATC form with hidden variant input
+  Usage: {% render 'gainage-buy-form', product: product %}
+{%- endcomment -%}
+
+{%- form 'product', product, class: 'gainage-buy-form', data-buy-form: '', novalidate: 'novalidate' -%}
+  <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
+
+  <button
+    type="submit"
+    class="gainage-buy-form__submit g-display"
+    {% unless product.available %}disabled aria-disabled="true"{% endunless %}
+  >
+    {%- if product.available -%}
+      ADD TO CART
+    {%- else -%}
+      SOLD OUT
+    {%- endif -%}
+  </button>
+
+  <div class="gainage-buy-form__links">
+    <a href="/pages/size-chart" class="gainage-buy-form__link g-display">SIZE CHART</a>
+    <a href="/policies/shipping-policy" class="gainage-buy-form__link g-display">SHIPPING POLICY</a>
+  </div>
+{%- endform -%}

@@ -1,0 +1,48 @@
+{%- comment -%}
+  GAINAGE Gallery — Desktop
+  Main image + thumbnail strip below
+  Usage: {% render 'gainage-gallery-desktop', product: product %}
+{%- endcomment -%}
+
+<div class="gainage-gallery-desktop" data-gallery>
+  <!-- Main image -->
+  <div class="gainage-gallery-desktop__main">
+    {%- for media in product.media -%}
+      {%- if media.media_type == 'image' -%}
+        <img
+          src="{{ media | image_url: width: 800 }}"
+          alt="{{ media.alt | escape | default: product.title }}"
+          width="800"
+          height="{{ 800 | divided_by: media.aspect_ratio | round }}"
+          class="gainage-gallery-desktop__image{% if forloop.first %} is-active{% endif %}"
+          data-media-index="{{ forloop.index0 }}"
+          loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+        >
+      {%- endif -%}
+    {%- endfor -%}
+  </div>
+
+  <!-- Thumbnails -->
+  {%- if product.media.size > 1 -%}
+    <div class="gainage-gallery-desktop__thumbs">
+      {%- for media in product.media -%}
+        {%- if media.media_type == 'image' -%}
+          <button
+            type="button"
+            class="gainage-gallery-desktop__thumb{% if forloop.first %} is-active{% endif %}"
+            data-thumb-index="{{ forloop.index0 }}"
+            aria-label="View image {{ forloop.index }}"
+          >
+            <img
+              src="{{ media | image_url: width: 160 }}"
+              alt=""
+              width="160"
+              height="{{ 160 | divided_by: media.aspect_ratio | round }}"
+              loading="lazy"
+            >
+          </button>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
+</div>

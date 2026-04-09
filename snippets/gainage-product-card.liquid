@@ -1,0 +1,38 @@
+{%- comment -%}
+  GAINAGE Product Card
+  Usage: {% render 'gainage-product-card', product: product %}
+{%- endcomment -%}
+
+<a href="{{ product.url }}" class="gainage-card" aria-label="{{ product.title }}">
+  <div class="gainage-card__media">
+    {%- if product.featured_image -%}
+      <img
+        src="{{ product.featured_image | image_url: width: 600 }}"
+        alt="{{ product.featured_image.alt | escape | default: product.title }}"
+        width="600"
+        height="{{ 600 | divided_by: product.featured_image.aspect_ratio | round }}"
+        loading="lazy"
+        class="gainage-card__img gainage-card__img--primary"
+      >
+      {%- if product.images.size > 1 -%}
+        <img
+          src="{{ product.images[1] | image_url: width: 600 }}"
+          alt="{{ product.images[1].alt | escape | default: product.title }}"
+          width="600"
+          height="{{ 600 | divided_by: product.images[1].aspect_ratio | round }}"
+          loading="lazy"
+          class="gainage-card__img gainage-card__img--hover"
+        >
+      {%- endif -%}
+    {%- else -%}
+      <div class="gainage-card__placeholder">
+        {{ 'product-1' | placeholder_svg_tag }}
+      </div>
+    {%- endif -%}
+  </div>
+
+  <div class="gainage-card__info">
+    <h3 class="gainage-card__title g-display">{{ product.title }}</h3>
+    <p class="gainage-card__price g-display">{{ product.price | money_without_trailing_zeros }}</p>
+  </div>
+</a>

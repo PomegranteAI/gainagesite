@@ -1,0 +1,79 @@
+/* ==========================================================================
+   GAINAGE Policy Pages
+   ========================================================================== */
+
+.gainage-policy {
+  padding: var(--g-margin-desktop) var(--g-margin-mobile);
+  max-width: 800px;
+}
+
+.gainage-policy__title {
+  font-size: 1.8rem;
+  color: var(--g-color-text);
+  margin: 0 0 32px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid var(--g-color-separator);
+}
+
+.gainage-policy__content {
+  color: var(--g-color-text);
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+.gainage-policy__content h2,
+.gainage-policy__content h3 {
+  font-family: var(--g-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--g-color-text);
+  margin: 32px 0 12px;
+}
+
+.gainage-policy__content h2 {
+  font-size: 1.2rem;
+}
+
+.gainage-policy__content h3 {
+  font-size: 1rem;
+}
+
+.gainage-policy__content p {
+  margin: 0 0 16px;
+}
+
+.gainage-policy__content ul,
+.gainage-policy__content ol {
+  margin: 0 0 16px;
+  padding-left: 20px;
+}
+
+.gainage-policy__content li {
+  margin-bottom: 8px;
+}
+
+.gainage-policy__content li::marker {
+  color: var(--g-color-accent);
+}
+
+.gainage-policy__content a {
+  color: var(--g-color-accent);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.gainage-policy__content a:hover {
+  color: var(--g-color-accent-hover);
+}
+
+.gainage-policy__content hr {
+  border: none;
+  border-top: 1px solid var(--g-color-separator);
+  margin: 24px 0;
+}
+
+@media (max-width: 1023px) {
+  .gainage-policy {
+    padding: var(--g-margin-mobile);
+  }
+}

@@ -1,0 +1,56 @@
+{%- comment -%}
+  GAINAGE FAQ — Accordion Q&A
+{%- endcomment -%}
+
+{{ 'gainage-faq.css' | asset_url | stylesheet_tag }}
+
+<div class="gainage-faq">
+  <h1 class="gainage-faq__title g-display">FAQ</h1>
+
+  {%- for block in section.blocks -%}
+    <div class="gainage-faq__item" {{ block.shopify_attributes }}>
+      <button
+        class="gainage-faq__question g-display"
+        type="button"
+        aria-expanded="false"
+        data-faq-toggle
+      >
+        <span>{{ block.settings.question }}</span>
+        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="gainage-faq__icon" aria-hidden="true"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+      </button>
+      <div class="gainage-faq__answer g-body" hidden>
+        {{ block.settings.answer }}
+      </div>
+    </div>
+  {%- endfor -%}
+</div>
+
+<script src="{{ 'gainage-faq.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "GAINAGE FAQ",
+  "tag": "section",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "question",
+      "name": "Question",
+      "settings": [
+        {
+          "type": "text",
+          "id": "question",
+          "label": "Question",
+          "default": "What is your return policy?"
+        },
+        {
+          "type": "richtext",
+          "id": "answer",
+          "label": "Answer",
+          "default": "<p>We accept returns within 14 days of delivery.</p>"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

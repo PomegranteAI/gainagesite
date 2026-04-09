@@ -1,0 +1,86 @@
+/* ==========================================================================
+   GAINAGE Base — Design Tokens & Foundation
+   ========================================================================== */
+
+:root {
+  /* Colours */
+  --g-color-bg: #000000;
+  --g-color-text: #FFFFFF;
+  --g-color-accent: #FFA500;
+  --g-color-accent-hover: #CC8400;
+  --g-color-secondary: #333333;
+  --g-color-separator: #222222;
+  --g-color-size-border: #FFFFFF;
+  --g-color-green: #00AA00;
+  --g-color-cart-bg: #FFA500;
+  --g-color-cart-text: #000000;
+
+  /* Spacing */
+  --g-margin-desktop: 40px;
+  --g-margin-mobile: 20px;
+  --g-nav-height: 60px;
+  --g-header-icon-height: 40px;
+  --g-sidebar-width: 200px;
+
+  /* Typography */
+  --g-font-display: 'Anton', Impact, 'Arial Black', sans-serif;
+  --g-font-body: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
+}
+
+/* Font classes */
+.g-display {
+  font-family: var(--g-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  font-weight: 400;
+  line-height: 1.1;
+}
+
+.g-body {
+  font-family: var(--g-font-body);
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+/* Base reset */
+.gainage-theme {
+  background-color: var(--g-color-bg);
+  color: var(--g-color-text);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.gainage-theme *,
+.gainage-theme *::before,
+.gainage-theme *::after {
+  border-radius: 0;
+}
+
+.gainage-theme a {
+  color: var(--g-color-text);
+  text-decoration: none;
+}
+
+.gainage-theme a:focus-visible {
+  outline: 2px solid var(--g-color-accent);
+  outline-offset: 2px;
+}
+
+.gainage-theme img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* Utility: visually hidden but accessible */
+.g-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}

@@ -1,0 +1,47 @@
+{
+  "sections": {
+    "main": {
+      "type": "gainage-faq",
+      "blocks": {
+        "q1": {
+          "type": "question",
+          "settings": {
+            "question": "WHAT IS YOUR RETURN POLICY?",
+            "answer": "<p>We accept returns within 14 days of delivery. Items must be unworn, unwashed, and in original packaging.</p>"
+          }
+        },
+        "q2": {
+          "type": "question",
+          "settings": {
+            "question": "HOW LONG DOES SHIPPING TAKE?",
+            "answer": "<p>UK orders are dispatched within 1-2 business days. Standard delivery takes 3-5 business days.</p>"
+          }
+        },
+        "q3": {
+          "type": "question",
+          "settings": {
+            "question": "DO YOU OFFER INTERNATIONAL SHIPPING?",
+            "answer": "<p>International shipping is available. Delivery times vary by destination.</p>"
+          }
+        },
+        "q4": {
+          "type": "question",
+          "settings": {
+            "question": "HOW DO I TRACK MY ORDER?",
+            "answer": "<p>You will receive a tracking number via email once your order has been dispatched.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "q1",
+        "q2",
+        "q3",
+        "q4"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

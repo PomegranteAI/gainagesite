@@ -1,0 +1,102 @@
+{%- comment -%}
+  GAINAGE Header
+  G-icon top bar, sidebar nav, top-right navigation
+{%- endcomment -%}
+
+<!-- Icon bar -->
+<div class="gainage-icon-bar">
+  <a href="{{ routes.root_url }}" class="gainage-icon-bar__link" aria-label="Home">
+    {% render 'gainage-icon-logo', size: 32 %}
+  </a>
+</div>
+
+<!-- Top navigation bar -->
+<div class="gainage-topnav">
+  <div class="gainage-topnav__inner">
+    <!-- Mobile hamburger -->
+    <button class="gainage-hamburger" type="button" aria-label="Open menu" aria-expanded="false" data-hamburger-toggle>
+      <span class="gainage-hamburger__line"></span>
+      <span class="gainage-hamburger__line"></span>
+    </button>
+
+    <!-- Search -->
+    <a href="{{ routes.search_url }}" class="gainage-topnav__item gainage-topnav__search g-display">
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+      </svg>
+      <span>SEARCH</span>
+    </a>
+
+    <div class="gainage-topnav__right">
+      <!-- Cart -->
+      <a href="{{ routes.cart_url }}" class="gainage-topnav__item g-display" data-cart-toggle>
+        CART(<span data-cart-count>{{ cart.item_count }}</span>)
+      </a>
+
+      <!-- Checkout -->
+      <a href="/checkout" class="gainage-topnav__item g-display">CHECKOUT</a>
+    </div>
+  </div>
+</div>
+
+<!-- Sidebar navigation (desktop: fixed left, mobile: overlay) -->
+<aside class="gainage-sidebar" id="gainage-sidebar" aria-label="Main navigation">
+  <div class="gainage-sidebar__inner">
+    <!-- Wordmark + tagline -->
+    <div class="gainage-sidebar__brand">
+      {% render 'gainage-wordmark', show_tagline: true %}
+    </div>
+
+    <!-- Primary nav -->
+    <nav class="gainage-sidebar__nav">
+      <a href="/collections/{{ section.settings.iteration_handle }}" class="gainage-sidebar__link gainage-sidebar__link--iteration g-display">
+        <span class="gainage-sidebar__iteration-label">ITERATION {{ section.settings.iteration_number }}</span><span class="gainage-sidebar__iteration-shop">(SHOP)</span>
+      </a>
+    </nav>
+
+    <!-- Secondary nav -->
+    <nav class="gainage-sidebar__nav gainage-sidebar__nav--secondary">
+      <a href="/policies/shipping-policy" class="gainage-sidebar__link g-body">SHIPPING POLICY</a>
+      <a href="/policies/terms-of-service" class="gainage-sidebar__link g-body">TERMS OF SERVICE</a>
+      <a href="/account" class="gainage-sidebar__link g-body">ACCOUNT</a>
+      {%- if section.settings.instagram_url != blank -%}
+        <a href="{{ section.settings.instagram_url }}" class="gainage-sidebar__link gainage-sidebar__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true">
+            <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+            <circle cx="12" cy="12" r="5"/>
+            <circle cx="17.5" cy="6.5" r="1.5" fill="currentColor" stroke="none"/>
+          </svg>
+        </a>
+      {%- endif -%}
+    </nav>
+  </div>
+
+  <!-- Mobile overlay backdrop -->
+  <div class="gainage-sidebar__backdrop" data-hamburger-toggle></div>
+</aside>
+
+{% schema %}
+{
+  "name": "GAINAGE Header",
+  "tag": "header",
+  "settings": [
+    {
+      "type": "text",
+      "id": "iteration_number",
+      "label": "Current iteration number",
+      "default": "1"
+    },
+    {
+      "type": "text",
+      "id": "iteration_handle",
+      "label": "Iteration collection handle",
+      "default": "iteration-001"
+    },
+    {
+      "type": "url",
+      "id": "instagram_url",
+      "label": "Instagram URL"
+    }
+  ]
+}
+{% endschema %}

@@ -1,0 +1,23 @@
+{%- comment -%}
+  GAINAGE G-icon mark — inline SVG with currentColor fill
+  Usage: {% render 'gainage-icon-logo', size: 40 %}
+{%- endcomment -%}
+
+{%- assign logo_size = size | default: 40 -%}
+
+<svg
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 48 48"
+  width="{{ logo_size }}"
+  height="{{ logo_size }}"
+  fill="currentColor"
+  aria-hidden="true"
+  class="gainage-icon-logo"
+>
+  <!-- Top bar + left bar (L-shape) -->
+  <path d="M0 0h48v9H9v39H0z"/>
+  <!-- Upper diagonal arrow -->
+  <polygon points="20,24 48,24 48,38"/>
+  <!-- Lower diagonal arrow -->
+  <polygon points="13,30 48,42 48,48 9,48"/>
+</svg>

@@ -1,0 +1,15 @@
+/* ==========================================================================
+   GAINAGE Footer
+   ========================================================================== */
+
+.gainage-footer {
+  padding: 24px var(--g-margin-mobile);
+  text-align: center;
+}
+
+.gainage-footer__text {
+  font-size: 0.65rem;
+  letter-spacing: 0.08em;
+  color: var(--g-color-secondary);
+  margin: 0;
+}

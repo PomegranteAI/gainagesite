@@ -1,0 +1,93 @@
+{%- comment -%}
+  GAINAGE Size Chart — Table or image mode
+{%- endcomment -%}
+
+{{ 'gainage-size-chart.css' | asset_url | stylesheet_tag }}
+
+<div class="gainage-size-chart">
+  <h1 class="gainage-size-chart__title g-display">SIZE CHART</h1>
+
+  {%- if section.settings.chart_image != blank -%}
+    <div class="gainage-size-chart__image">
+      <img
+        src="{{ section.settings.chart_image | image_url: width: 800 }}"
+        alt="Size chart"
+        width="800"
+        height="{{ 800 | divided_by: section.settings.chart_image.aspect_ratio | round }}"
+        loading="lazy"
+      >
+    </div>
+  {%- endif -%}
+
+  {%- if section.blocks.size > 0 -%}
+    <div class="gainage-size-chart__table-wrap">
+      <table class="gainage-size-chart__table">
+        <thead>
+          <tr>
+            <th class="g-display">SIZE</th>
+            <th class="g-display">CHEST (CM)</th>
+            <th class="g-display">LENGTH (CM)</th>
+            <th class="g-display">SLEEVE (CM)</th>
+          </tr>
+        </thead>
+        <tbody>
+          {%- for block in section.blocks -%}
+            <tr {{ block.shopify_attributes }}>
+              <td class="g-display">{{ block.settings.size_label }}</td>
+              <td class="g-body">{{ block.settings.chest }}</td>
+              <td class="g-body">{{ block.settings.length }}</td>
+              <td class="g-body">{{ block.settings.sleeve }}</td>
+            </tr>
+          {%- endfor -%}
+        </tbody>
+      </table>
+    </div>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "GAINAGE Size Chart",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "chart_image",
+      "label": "Size chart image (optional)",
+      "info": "Upload an image of the size chart instead of using the table"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "size_row",
+      "name": "Size row",
+      "settings": [
+        {
+          "type": "text",
+          "id": "size_label",
+          "label": "Size",
+          "default": "M"
+        },
+        {
+          "type": "text",
+          "id": "chest",
+          "label": "Chest (cm)",
+          "default": "112"
+        },
+        {
+          "type": "text",
+          "id": "length",
+          "label": "Length (cm)",
+          "default": "74"
+        },
+        {
+          "type": "text",
+          "id": "sleeve",
+          "label": "Sleeve (cm)",
+          "default": "24"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

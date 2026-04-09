@@ -1,0 +1,57 @@
+/* ==========================================================================
+   GAINAGE Size Chart
+   ========================================================================== */
+
+.gainage-size-chart {
+  padding: var(--g-margin-desktop) var(--g-margin-mobile);
+  max-width: 800px;
+}
+
+.gainage-size-chart__title {
+  font-size: 1.4rem;
+  margin: 0 0 32px;
+  color: var(--g-color-text);
+}
+
+.gainage-size-chart__image {
+  margin-bottom: 32px;
+}
+
+.gainage-size-chart__image img {
+  width: 100%;
+  height: auto;
+}
+
+.gainage-size-chart__table-wrap {
+  overflow-x: auto;
+}
+
+.gainage-size-chart__table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.gainage-size-chart__table th {
+  background: var(--g-color-accent);
+  color: var(--g-color-cart-text);
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+}
+
+.gainage-size-chart__table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--g-color-separator);
+  color: var(--g-color-text);
+  font-size: 0.8rem;
+}
+
+.gainage-size-chart__table td:first-child {
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+}
+
+.gainage-size-chart__table tbody tr:hover {
+  background: rgba(255, 255, 255, 0.03);
+}

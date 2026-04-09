@@ -1,0 +1,211 @@
+/* ==========================================================================
+   GAINAGE Full Cart Page
+   ========================================================================== */
+
+.gainage-cart-page {
+  padding: var(--g-margin-desktop) var(--g-margin-mobile);
+  max-width: 900px;
+}
+
+.gainage-cart-page__title {
+  font-size: 1.4rem;
+  margin: 0 0 32px;
+  color: var(--g-color-text);
+}
+
+/* Line items */
+.gainage-cart-page__item {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  gap: 16px;
+  align-items: center;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--g-color-separator);
+}
+
+.gainage-cart-page__item-image img {
+  width: 80px;
+  height: auto;
+  display: block;
+}
+
+.gainage-cart-page__item-title {
+  font-size: 0.7rem;
+  letter-spacing: 0.08em;
+  color: var(--g-color-text);
+  text-decoration: none;
+  display: block;
+}
+
+.gainage-cart-page__item-meta {
+  font-size: 0.6rem;
+  color: var(--g-color-secondary);
+  margin: 2px 0 0;
+}
+
+.gainage-cart-page__item-variant {
+  font-size: 0.7rem;
+  margin: 4px 0 0;
+  color: var(--g-color-text);
+}
+
+/* Qty controls */
+.gainage-cart-page__item-qty {
+  display: flex;
+  align-items: center;
+  border: 1px solid var(--g-color-text);
+}
+
+.gainage-cart-page__qty-btn {
+  background: none;
+  border: none;
+  color: var(--g-color-text);
+  padding: 6px 10px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  font-family: var(--g-font-display);
+}
+
+.gainage-cart-page__qty-value {
+  padding: 6px 10px;
+  font-size: 0.75rem;
+  border-left: 1px solid var(--g-color-text);
+  border-right: 1px solid var(--g-color-text);
+  min-width: 32px;
+  text-align: center;
+}
+
+.gainage-cart-page__item-price {
+  font-size: 0.8rem;
+  color: var(--g-color-accent);
+  text-align: right;
+}
+
+.gainage-cart-page__item-remove {
+  background: none;
+  border: none;
+  color: var(--g-color-secondary);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.gainage-cart-page__item-remove:hover {
+  color: var(--g-color-text);
+}
+
+/* Free shipping bar on cart page */
+.gainage-cart-page .gainage-shipping-bar {
+  margin: 24px 0;
+}
+
+.gainage-cart-page .gainage-shipping-bar__track {
+  background: var(--g-color-separator);
+}
+
+.gainage-cart-page .gainage-shipping-bar__fill {
+  background: var(--g-color-accent);
+}
+
+.gainage-cart-page .gainage-shipping-bar__text {
+  color: var(--g-color-text);
+}
+
+/* Footer */
+.gainage-cart-page__footer {
+  padding-top: 24px;
+}
+
+.gainage-cart-page__subtotal {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  font-size: 0.9rem;
+  color: var(--g-color-text);
+}
+
+.gainage-cart-page__subtotal-value {
+  color: var(--g-color-accent);
+}
+
+.gainage-cart-page__terms {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 20px;
+  cursor: pointer;
+  font-size: 0.75rem;
+  color: var(--g-color-text);
+}
+
+.gainage-cart-page__terms-check {
+  width: 14px;
+  height: 14px;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.gainage-cart-page__checkout {
+  display: block;
+  text-align: center;
+  padding: 14px 24px;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--g-color-accent);
+  border: 1px solid var(--g-color-accent);
+  background: transparent;
+  text-decoration: none;
+  max-width: 300px;
+  font-family: var(--g-font-display);
+}
+
+.gainage-cart-page__checkout[aria-disabled="true"] {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.gainage-cart-page__checkout:hover {
+  border-color: var(--g-color-accent-hover);
+  color: var(--g-color-accent-hover);
+}
+
+/* Empty state */
+.gainage-cart-page__empty {
+  text-align: center;
+  padding: 80px 0;
+}
+
+.gainage-cart-page__empty-text {
+  font-size: 1rem;
+  margin: 0 0 16px;
+  color: var(--g-color-text);
+}
+
+.gainage-cart-page__empty-link {
+  font-size: 0.75rem;
+  color: var(--g-color-accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .gainage-cart-page__item {
+    grid-template-columns: 60px 1fr auto;
+    gap: 12px;
+  }
+
+  .gainage-cart-page__item-qty {
+    grid-column: 2;
+  }
+
+  .gainage-cart-page__item-price {
+    grid-column: 3;
+    grid-row: 1;
+  }
+
+  .gainage-cart-page__item-remove {
+    grid-column: 3;
+    grid-row: 2;
+    justify-self: end;
+  }
+}

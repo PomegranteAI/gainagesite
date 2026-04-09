@@ -1,0 +1,63 @@
+/* ==========================================================================
+   GAINAGE FAQ Accordion
+   ========================================================================== */
+
+.gainage-faq {
+  padding: var(--g-margin-desktop) var(--g-margin-mobile);
+  max-width: 800px;
+}
+
+.gainage-faq__title {
+  font-size: 1.4rem;
+  margin: 0 0 32px;
+  color: var(--g-color-text);
+}
+
+.gainage-faq__item {
+  border-bottom: 1px solid var(--g-color-separator);
+}
+
+.gainage-faq__question {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 16px 0;
+  background: none;
+  border: none;
+  color: var(--g-color-text);
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--g-font-display);
+}
+
+.gainage-faq__question:hover {
+  opacity: 0.8;
+}
+
+.gainage-faq__icon {
+  flex-shrink: 0;
+  transition: transform 200ms ease;
+}
+
+.gainage-faq__question[aria-expanded="true"] .gainage-faq__icon {
+  transform: rotate(45deg);
+}
+
+.gainage-faq__answer {
+  padding: 0 0 16px;
+  font-size: 0.8rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.8);
+}
+
+.gainage-faq__answer p {
+  margin: 0 0 8px;
+}
+
+.gainage-faq__answer a {
+  color: var(--g-color-accent);
+}

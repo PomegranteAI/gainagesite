@@ -1,0 +1,41 @@
+{%- comment -%}
+  GAINAGE wordmark + tagline
+  Usage: {% render 'gainage-wordmark', show_tagline: true %}
+{%- endcomment -%}
+
+{%- assign show_tagline = show_tagline | default: true -%}
+
+<div class="gainage-wordmark">
+  <a href="{{ routes.root_url }}" class="gainage-wordmark__link">
+    <span class="gainage-wordmark__text g-display">GAINAGE</span>
+  </a>
+  {%- if show_tagline -%}
+    <span class="gainage-wordmark__tagline g-body">A SEVERE ADDICTION TO PROGRESS</span>
+  {%- endif -%}
+</div>
+
+<style>
+  .gainage-wordmark {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+  }
+
+  .gainage-wordmark__link {
+    text-decoration: none;
+    color: var(--g-color-text);
+  }
+
+  .gainage-wordmark__text {
+    font-size: 2rem;
+    line-height: 1;
+  }
+
+  .gainage-wordmark__tagline {
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--g-color-text);
+    opacity: 0.9;
+  }
+</style>

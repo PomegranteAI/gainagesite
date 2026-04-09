@@ -1,0 +1,48 @@
+/* ==========================================================================
+   GAINAGE Contact Page Overrides
+   ========================================================================== */
+
+.gainage-theme .section-contact-form {
+  padding: var(--g-margin-desktop) var(--g-margin-mobile);
+  max-width: 800px;
+}
+
+.gainage-theme .contact__fields .field__label {
+  font-family: var(--g-font-body);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  font-size: 0.7rem;
+  color: var(--g-color-text);
+}
+
+.gainage-theme .contact__fields .field__input,
+.gainage-theme .contact__fields textarea {
+  background: var(--g-color-bg);
+  color: var(--g-color-text);
+  border: none;
+  border-bottom: 1px solid var(--g-color-secondary);
+  border-radius: 0;
+  font-family: var(--g-font-body);
+}
+
+.gainage-theme .contact__fields .field__input:focus,
+.gainage-theme .contact__fields textarea:focus {
+  border-bottom-color: var(--g-color-accent);
+  box-shadow: none;
+}
+
+.gainage-theme .contact__button .button {
+  background: transparent;
+  color: var(--g-color-accent);
+  border: 1px solid var(--g-color-accent);
+  border-radius: 0;
+  font-family: var(--g-font-display);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.gainage-theme .contact__button .button:hover {
+  border-color: var(--g-color-accent-hover);
+  color: var(--g-color-accent-hover);
+  background: transparent;
+}

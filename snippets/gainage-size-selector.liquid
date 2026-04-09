@@ -1,0 +1,45 @@
+{%- comment -%}
+  GAINAGE Size Selector — Inline pill buttons
+  Usage: {% render 'gainage-size-selector', product: product %}
+{%- endcomment -%}
+
+{%- assign size_option = nil -%}
+{%- for option in product.options_with_values -%}
+  {%- assign option_name_lower = option.name | downcase -%}
+  {%- if option_name_lower == 'size' -%}
+    {%- assign size_option = option -%}
+    {%- assign size_option_index = forloop.index0 -%}
+    {%- break -%}
+  {%- endif -%}
+{%- endfor -%}
+
+{%- if size_option -%}
+  <div class="gainage-sizes" data-size-selector>
+    <p class="gainage-sizes__label g-display">CHOOSE SIZE</p>
+    <div class="gainage-sizes__options" role="radiogroup" aria-label="Size">
+      {%- for value in size_option.values -%}
+        {%- assign variant_available = false -%}
+        {%- for variant in product.variants -%}
+          {%- if variant.options[size_option_index] == value and variant.available -%}
+            {%- assign variant_available = true -%}
+            {%- assign variant_id = variant.id -%}
+            {%- break -%}
+          {%- endif -%}
+        {%- endfor -%}
+
+        <button
+          type="button"
+          class="gainage-sizes__pill g-display{% unless variant_available %} gainage-sizes__pill--soldout{% endunless %}"
+          data-size-value="{{ value }}"
+          data-variant-id="{{ variant_id }}"
+          {% unless variant_available %}disabled aria-disabled="true"{% endunless %}
+          role="radio"
+          aria-checked="false"
+          aria-label="{{ value }}{% unless variant_available %} — sold out{% endunless %}"
+        >
+          {{ value }}
+        </button>
+      {%- endfor -%}
+    </div>
+  </div>
+{%- endif -%}

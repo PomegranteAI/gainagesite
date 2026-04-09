@@ -1,0 +1,57 @@
+/* ==========================================================================
+   GAINAGE Hero — Full-bleed banner
+   ========================================================================== */
+
+.gainage-hero {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.gainage-hero__image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.gainage-hero__placeholder svg {
+  width: 100%;
+  height: 400px;
+  fill: var(--g-color-secondary);
+}
+
+.gainage-hero__overlay {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--g-margin-mobile);
+  background: rgba(0, 0, 0, 0.3);
+}
+
+.gainage-hero__heading {
+  font-size: clamp(2rem, 5vw, 4rem);
+  color: var(--g-color-text);
+  margin: 0 0 20px;
+}
+
+.gainage-hero__cta {
+  display: inline-block;
+  padding: 14px 32px;
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  color: var(--g-color-accent);
+  border: 1px solid var(--g-color-accent);
+  background: transparent;
+  text-decoration: none;
+  transition: border-color 150ms ease, color 150ms ease;
+}
+
+.gainage-hero__cta:hover {
+  border-color: var(--g-color-accent-hover);
+  color: var(--g-color-accent-hover);
+}

@@ -1,0 +1,111 @@
+/* ==========================================================================
+   GAINAGE Collection Grid
+   ========================================================================== */
+
+.gainage-grid {
+  padding: var(--g-margin-mobile);
+}
+
+.gainage-grid__items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+}
+
+.gainage-grid__empty {
+  text-align: center;
+  color: var(--g-color-secondary);
+  padding: 80px 0;
+}
+
+/* Product card */
+.gainage-card {
+  display: block;
+  text-decoration: none;
+  color: var(--g-color-text);
+}
+
+.gainage-card__media {
+  position: relative;
+  overflow: hidden;
+  background: var(--g-color-bg);
+  margin-bottom: 12px;
+}
+
+.gainage-card__img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: filter 150ms ease;
+}
+
+.gainage-card__img--hover {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0;
+  transition: opacity 150ms ease;
+}
+
+.gainage-card:hover .gainage-card__img--primary {
+  filter: brightness(1.1);
+}
+
+.gainage-card:hover .gainage-card__img--hover {
+  opacity: 1;
+}
+
+.gainage-card__placeholder svg {
+  width: 100%;
+  height: auto;
+  fill: var(--g-color-secondary);
+}
+
+.gainage-card__info {
+  text-align: center;
+}
+
+.gainage-card__title {
+  font-size: 0.7rem;
+  letter-spacing: 0.1em;
+  margin: 0 0 4px;
+  color: var(--g-color-text);
+}
+
+.gainage-card__price {
+  font-size: 0.7rem;
+  letter-spacing: 0.05em;
+  margin: 0;
+  color: var(--g-color-accent);
+}
+
+/* Pagination */
+.gainage-grid__pagination {
+  margin-top: 40px;
+  text-align: center;
+}
+
+/* Responsive */
+@media (max-width: 1023px) {
+  .gainage-grid__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+}
+
+@media (max-width: 480px) {
+  .gainage-grid__items {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .gainage-card__title {
+    font-size: 0.6rem;
+  }
+
+  .gainage-card__price {
+    font-size: 0.6rem;
+  }
+}

@@ -1,0 +1,117 @@
+{%- comment -%}
+  GAINAGE Cart Drawer — Slide-in from right, gold background
+{%- endcomment -%}
+
+{{ 'gainage-cart-drawer.css' | asset_url | stylesheet_tag }}
+
+<div class="gainage-drawer" id="gainage-cart-drawer" aria-hidden="true" role="dialog" aria-label="Shopping cart">
+  <!-- Overlay -->
+  <div class="gainage-drawer__overlay" data-drawer-close></div>
+
+  <!-- Drawer panel -->
+  <div class="gainage-drawer__panel">
+    <!-- Header -->
+    <div class="gainage-drawer__header">
+      <span class="gainage-drawer__title g-display">YOUR CART</span>
+      <span class="gainage-drawer__count g-display" data-drawer-count>{{ cart.item_count }} {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }}</span>
+      <button class="gainage-drawer__close" type="button" data-drawer-close aria-label="Close cart">
+        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+          <line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Free shipping bar -->
+    {% render 'gainage-free-shipping-bar', cart: cart, threshold: section.settings.free_shipping_threshold %}
+
+    <!-- Line items -->
+    <div class="gainage-drawer__items" data-drawer-items>
+      {%- if cart.item_count > 0 -%}
+        {%- for item in cart.items -%}
+          <div class="gainage-drawer__item" data-line-item data-line-key="{{ item.key }}">
+            <div class="gainage-drawer__item-image">
+              {%- if item.image -%}
+                <img
+                  src="{{ item.image | image_url: width: 120 }}"
+                  alt="{{ item.image.alt | escape | default: item.product.title }}"
+                  width="120"
+                  height="{{ 120 | divided_by: item.image.aspect_ratio | round }}"
+                  loading="lazy"
+                >
+              {%- endif -%}
+            </div>
+            <div class="gainage-drawer__item-info">
+              <div class="gainage-drawer__item-header">
+                <h3 class="gainage-drawer__item-title g-display">{{ item.product.title }}</h3>
+                <span class="gainage-drawer__item-price g-display">{{ item.final_line_price | money_without_trailing_zeros }}</span>
+              </div>
+              {%- if item.product.metafields.custom.iteration != blank -%}
+                <p class="gainage-drawer__item-iteration g-body">({{ item.product.metafields.custom.iteration }})</p>
+              {%- endif -%}
+              {%- unless item.variant.title == 'Default Title' -%}
+                <p class="gainage-drawer__item-variant g-display">{{ item.variant.title }}</p>
+              {%- endunless -%}
+              <div class="gainage-drawer__item-qty">
+                <button type="button" class="gainage-drawer__qty-btn g-display" data-qty-minus data-line-key="{{ item.key }}" aria-label="Decrease quantity">-</button>
+                <span class="gainage-drawer__qty-value g-display" data-qty-value>{{ item.quantity }}</span>
+                <button type="button" class="gainage-drawer__qty-btn g-display" data-qty-plus data-line-key="{{ item.key }}" aria-label="Increase quantity">+</button>
+              </div>
+            </div>
+          </div>
+        {%- endfor -%}
+      {%- else -%}
+        <div class="gainage-drawer__empty">
+          <p class="gainage-drawer__empty-text g-display">YOUR CART IS EMPTY</p>
+          <a href="/collections/{{ section.settings.iteration_handle | default: 'all' }}" class="gainage-drawer__empty-link g-display" data-drawer-close>CONTINUE SHOPPING</a>
+        </div>
+      {%- endif -%}
+    </div>
+
+    <!-- Footer -->
+    {%- if cart.item_count > 0 -%}
+      <div class="gainage-drawer__footer">
+        <div class="gainage-drawer__subtotal">
+          <span class="gainage-drawer__subtotal-label g-display">SUBTOTAL</span>
+          <span class="gainage-drawer__subtotal-value g-display" data-drawer-subtotal>{{ cart.total_price | money_without_trailing_zeros }}</span>
+        </div>
+
+        <label class="gainage-drawer__terms">
+          <input type="checkbox" class="gainage-drawer__terms-check" data-terms-check>
+          <span class="gainage-drawer__terms-text g-body">I agree to the terms and conditions</span>
+        </label>
+
+        <div class="gainage-drawer__actions">
+          <a href="{{ routes.cart_url }}" class="gainage-drawer__btn gainage-drawer__btn--secondary g-display">VIEW CART</a>
+          <a href="/checkout" class="gainage-drawer__btn gainage-drawer__btn--primary g-display" data-checkout-btn aria-disabled="true">CHECK OUT</a>
+        </div>
+      </div>
+    {%- endif -%}
+  </div>
+</div>
+
+<script src="{{ 'gainage-cart-drawer.js' | asset_url }}" defer="defer"></script>
+
+{% schema %}
+{
+  "name": "GAINAGE Cart Drawer",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "range",
+      "id": "free_shipping_threshold",
+      "min": 0,
+      "max": 200,
+      "step": 5,
+      "default": 50,
+      "unit": "£",
+      "label": "Free shipping threshold"
+    },
+    {
+      "type": "text",
+      "id": "iteration_handle",
+      "label": "Default collection handle (for empty cart link)",
+      "default": "iteration-001"
+    }
+  ]
+}
+{% endschema %}

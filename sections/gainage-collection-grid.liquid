@@ -1,0 +1,64 @@
+{%- comment -%}
+  GAINAGE Collection Grid — 3-col desktop, 2-col mobile product grid
+{%- endcomment -%}
+
+{{ 'gainage-collection-grid.css' | asset_url | stylesheet_tag }}
+
+{%- liquid
+  if section.settings.collection != blank
+    assign target_collection = section.settings.collection
+  else
+    assign target_collection = collection
+  endif
+-%}
+
+<div class="gainage-grid" id="gainage-collection-grid">
+  {%- if target_collection != blank and target_collection.products.size > 0 -%}
+    <div class="gainage-grid__items">
+      {%- for product in target_collection.products -%}
+        <div class="gainage-grid__item">
+          {% render 'gainage-product-card', product: product %}
+        </div>
+      {%- endfor -%}
+    </div>
+
+    {%- if paginate -%}
+      {%- if paginate.pages > 1 -%}
+        <div class="gainage-grid__pagination">
+          {% render 'pagination', paginate: paginate %}
+        </div>
+      {%- endif -%}
+    {%- endif -%}
+  {%- else -%}
+    <p class="gainage-grid__empty g-body">No products found.</p>
+  {%- endif -%}
+</div>
+
+{% schema %}
+{
+  "name": "GAINAGE Collection Grid",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection",
+      "info": "Select a collection. Leave blank to use the current collection page."
+    },
+    {
+      "type": "range",
+      "id": "products_per_page",
+      "min": 6,
+      "max": 24,
+      "step": 3,
+      "default": 12,
+      "label": "Products per page"
+    }
+  ],
+  "presets": [
+    {
+      "name": "GAINAGE Collection Grid"
+    }
+  ]
+}
+{% endschema %}

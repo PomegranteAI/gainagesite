@@ -1,0 +1,55 @@
+{
+  "sections": {
+    "main": {
+      "type": "gainage-size-chart",
+      "blocks": {
+        "size-sm": {
+          "type": "size_row",
+          "settings": {
+            "size_label": "S-M",
+            "chest": "108",
+            "length": "72",
+            "sleeve": "23"
+          }
+        },
+        "size-l": {
+          "type": "size_row",
+          "settings": {
+            "size_label": "L",
+            "chest": "116",
+            "length": "76",
+            "sleeve": "25"
+          }
+        },
+        "size-xl": {
+          "type": "size_row",
+          "settings": {
+            "size_label": "XL",
+            "chest": "124",
+            "length": "80",
+            "sleeve": "27"
+          }
+        },
+        "size-xxl": {
+          "type": "size_row",
+          "settings": {
+            "size_label": "XXL",
+            "chest": "132",
+            "length": "84",
+            "sleeve": "29"
+          }
+        }
+      },
+      "block_order": [
+        "size-sm",
+        "size-l",
+        "size-xl",
+        "size-xxl"
+      ],
+      "settings": {}
+    }
+  },
+  "order": [
+    "main"
+  ]
+}

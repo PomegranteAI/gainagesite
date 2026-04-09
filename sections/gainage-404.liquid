@@ -1,0 +1,53 @@
+{%- comment -%}
+  GAINAGE 404 Page
+{%- endcomment -%}
+
+<div class="gainage-404">
+  <h1 class="gainage-404__title g-display">PAGE NOT FOUND</h1>
+  <a href="/collections/{{ section.settings.collection_handle | default: 'all' }}" class="gainage-404__link g-display">CONTINUE SHOPPING</a>
+</div>
+
+<style>
+  .gainage-404 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    min-height: 50vh;
+    padding: var(--g-margin-mobile);
+  }
+
+  .gainage-404__title {
+    font-size: clamp(1.5rem, 4vw, 2.5rem);
+    color: var(--g-color-text);
+    margin: 0 0 24px;
+  }
+
+  .gainage-404__link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    color: var(--g-color-accent);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+
+  .gainage-404__link:hover {
+    color: var(--g-color-accent-hover);
+  }
+</style>
+
+{% schema %}
+{
+  "name": "GAINAGE 404",
+  "tag": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "collection_handle",
+      "label": "Collection handle for 'Continue Shopping' link",
+      "default": "iteration-001"
+    }
+  ]
+}
+{% endschema %}

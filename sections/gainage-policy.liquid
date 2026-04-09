@@ -1,0 +1,21 @@
+{%- comment -%}
+  GAINAGE Policy Section — Reusable for all policy pages
+  (shipping, terms, refund, privacy)
+{%- endcomment -%}
+
+{{ 'gainage-policy.css' | asset_url | stylesheet_tag }}
+
+<div class="gainage-policy">
+  <h1 class="gainage-policy__title g-display">{{ policy.title }}</h1>
+  <div class="gainage-policy__content g-body">
+    {{ policy.body }}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "GAINAGE Policy",
+  "tag": "section",
+  "settings": []
+}
+{% endschema %}

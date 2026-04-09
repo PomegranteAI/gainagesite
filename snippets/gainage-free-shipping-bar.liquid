@@ -1,0 +1,28 @@
+{%- comment -%}
+  GAINAGE Free Shipping Progress Bar
+  Usage: {% render 'gainage-free-shipping-bar', cart: cart, threshold: 50 %}
+{%- endcomment -%}
+
+{%- assign threshold = threshold | default: 50 -%}
+{%- assign threshold_cents = threshold | times: 100 -%}
+{%- assign cart_total = cart.total_price -%}
+{%- assign remaining_cents = threshold_cents | minus: cart_total -%}
+
+{%- if cart_total >= threshold_cents -%}
+  {%- assign bar_width = 100 -%}
+{%- else -%}
+  {%- assign bar_width = cart_total | times: 100 | divided_by: threshold_cents -%}
+{%- endif -%}
+
+<div class="gainage-shipping-bar" data-shipping-bar data-threshold="{{ threshold_cents }}">
+  <div class="gainage-shipping-bar__track">
+    <div class="gainage-shipping-bar__fill" style="width: {{ bar_width }}%" data-shipping-fill></div>
+  </div>
+  <p class="gainage-shipping-bar__text" data-shipping-text>
+    {%- if cart_total >= threshold_cents -%}
+      YOU'VE UNLOCKED FREE SHIPPING
+    {%- else -%}
+      {{ remaining_cents | money_without_trailing_zeros }} AWAY FROM FREE SHIPPING
+    {%- endif -%}
+  </p>
+</div>
