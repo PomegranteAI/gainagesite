@@ -15,10 +15,16 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
-    <!-- GAINAGE: Anton display font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&display=swap" rel="stylesheet">
+    <!-- GAINAGE: HelveticaNowDisplay-Bold (self-hosted) -->
+    <style>
+      @font-face {
+        font-family: 'HelveticaNowDisplay';
+        src: url('{{ 'HelveticaNowDisplay-Bold.ttf' | asset_url }}') format('truetype');
+        font-weight: 700;
+        font-style: normal;
+        font-display: swap;
+      }
+    </style>
 
     <title>
       {{ page_title }}

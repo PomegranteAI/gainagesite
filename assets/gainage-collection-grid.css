@@ -3,7 +3,13 @@
    ========================================================================== */
 
 .gainage-grid {
-  padding: var(--g-margin-mobile);
+  padding: var(--g-margin-desktop);
+}
+
+@media (max-width: 1023px) {
+  .gainage-grid {
+    padding: var(--g-margin-mobile);
+  }
 }
 
 .gainage-grid__items {

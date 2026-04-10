@@ -165,10 +165,26 @@
   display: none;
 }
 
-/* Main content offset for sidebar */
+/* Page max-width centering */
+.gainage-icon-bar,
+.gainage-topnav {
+  max-width: 1440px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Main content offset for sidebar.
+   On screens > 1440px, the sidebar shifts right with the centered layout,
+   so the content margin must also shift to avoid overlap. */
 .gainage-content-wrapper {
-  margin-left: var(--g-sidebar-width);
+  margin-left: max(var(--g-sidebar-width), calc(50vw - 720px + var(--g-sidebar-width)));
+  max-width: calc(1440px - var(--g-sidebar-width));
   min-height: calc(100vh - 120px);
+}
+
+/* Sidebar follows centered layout on wide screens */
+.gainage-sidebar {
+  left: max(0px, calc(50vw - 720px));
 }
 
 /* ==============================

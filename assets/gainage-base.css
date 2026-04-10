@@ -23,7 +23,7 @@
   --g-sidebar-width: 200px;
 
   /* Typography */
-  --g-font-display: 'Anton', Impact, 'Arial Black', sans-serif;
+  --g-font-display: 'HelveticaNowDisplay', 'Helvetica Neue', Arial, sans-serif;
   --g-font-body: -apple-system, BlinkMacSystemFont, 'Helvetica Neue', Arial, sans-serif;
 }
 
@@ -32,7 +32,7 @@
   font-family: var(--g-font-display);
   text-transform: uppercase;
   letter-spacing: 0.05em;
-  font-weight: 400;
+  font-weight: 700;
   line-height: 1.1;
 }
 
