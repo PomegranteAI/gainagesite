@@ -122,7 +122,7 @@
 }
 
 .gainage-sidebar__nav--secondary {
-  margin-top: auto;
+  margin-top: 16px;
   padding-bottom: 40px;
   gap: 4px;
 }
