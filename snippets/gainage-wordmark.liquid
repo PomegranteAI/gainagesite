@@ -30,10 +30,13 @@
     display: block;
   }
 
-  /* Clip container — shows only the GAINAGE text, not the tagline */
+  /* Clip container — crops to GAINAGE text only (no tagline, no side whitespace).
+     SVG is 864x720; at display width 210px it renders 175px tall.
+     X: G starts at SVG x=183 → display x=44.5px; shift left -44px so G is flush left.
+     Y: text band is SVG y=282-464 → display y=69-113px; clip 44px tall at top:-69px. */
   .gainage-wordmark__clip {
     position: relative;
-    width: 210px;
+    width: 160px;
     height: 44px;
     overflow: hidden;
   }
@@ -41,7 +44,7 @@
   .gainage-wordmark__logo {
     position: absolute;
     top: -69px;
-    left: 0;
+    left: -44px;
     width: 210px;
     height: 175px;
     display: block;
