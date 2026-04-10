@@ -3,7 +3,7 @@
   Usage: {% render 'gainage-wordmark', show_tagline: true %}
 {%- endcomment -%}
 
-{%- assign show_tagline = show_tagline | default: true -%}
+{%- assign show_tagline = show_tagline | default: false -%}
 
 <div class="gainage-wordmark">
   <a href="{{ routes.root_url }}" class="gainage-wordmark__link" aria-label="GAINAGE — Home">
@@ -11,8 +11,8 @@
       src="{{ 'GAINAGE Classic LOGO white .svg' | asset_url }}"
       alt="GAINAGE"
       class="gainage-wordmark__logo"
-      width="140"
-      height="117"
+      width="210"
+      height="175"
       loading="eager"
     >
   </a>
@@ -34,7 +34,7 @@
   }
 
   .gainage-wordmark__logo {
-    width: 140px;
+    width: 210px;
     height: auto;
     display: block;
   }

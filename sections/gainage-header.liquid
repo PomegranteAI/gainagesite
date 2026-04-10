@@ -19,15 +19,15 @@
       <span class="gainage-hamburger__line"></span>
     </button>
 
-    <!-- Search -->
-    <a href="{{ routes.search_url }}" class="gainage-topnav__item gainage-topnav__search g-display">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-      </svg>
-      <span>SEARCH</span>
-    </a>
-
     <div class="gainage-topnav__right">
+      <!-- Search -->
+      <a href="{{ routes.search_url }}" class="gainage-topnav__item gainage-topnav__search g-display">
+        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <span>SEARCH</span>
+      </a>
+
       <!-- Cart -->
       <a href="{{ routes.cart_url }}" class="gainage-topnav__item g-display" data-cart-toggle>
         CART(<span data-cart-count>{{ cart.item_count }}</span>)
@@ -44,7 +44,7 @@
   <div class="gainage-sidebar__inner">
     <!-- Wordmark + tagline -->
     <div class="gainage-sidebar__brand">
-      {% render 'gainage-wordmark', show_tagline: true %}
+      {% render 'gainage-wordmark', show_tagline: false %}
     </div>
 
     <!-- Primary nav -->
