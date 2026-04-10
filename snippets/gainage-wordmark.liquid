@@ -6,8 +6,15 @@
 {%- assign show_tagline = show_tagline | default: true -%}
 
 <div class="gainage-wordmark">
-  <a href="{{ routes.root_url }}" class="gainage-wordmark__link">
-    <span class="gainage-wordmark__text g-display">GAINAGE</span>
+  <a href="{{ routes.root_url }}" class="gainage-wordmark__link" aria-label="GAINAGE — Home">
+    <img
+      src="{{ 'GAINAGE Classic LOGO white .svg' | asset_url }}"
+      alt="GAINAGE"
+      class="gainage-wordmark__logo"
+      width="140"
+      height="117"
+      loading="eager"
+    >
   </a>
   {%- if show_tagline -%}
     <span class="gainage-wordmark__tagline g-body">A SEVERE ADDICTION TO PROGRESS</span>
@@ -18,17 +25,18 @@
   .gainage-wordmark {
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 6px;
   }
 
   .gainage-wordmark__link {
     text-decoration: none;
-    color: var(--g-color-text);
+    display: block;
   }
 
-  .gainage-wordmark__text {
-    font-size: 2rem;
-    line-height: 1;
+  .gainage-wordmark__logo {
+    width: 140px;
+    height: auto;
+    display: block;
   }
 
   .gainage-wordmark__tagline {
