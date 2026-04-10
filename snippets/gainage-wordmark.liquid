@@ -2,25 +2,24 @@
   GAINAGE wordmark
   Usage: {% render 'gainage-wordmark' %}
 
-  The SVG file (864x720) contains both the wordmark and the tagline.
-  A clip container (overflow:hidden) is used to show only the GAINAGE
-  text band (SVG Y 282-464), hiding the built-in tagline.
-  At display width 210px the full SVG renders 175px tall; the clip
-  window starts at top:-69px and is 44px tall.
+  The SVG (864x720) contains the full logo with tagline.
+  We use CSS background-image so we can control the rendered size and crop
+  precisely, avoiding browser quirks with absolutely-positioned <img>.
+
+  background-size: 210px 175px  → renders SVG at this display size
+  background-position: -44px -69px → shifts so G aligns to left edge,
+                                      and text Y-band (display y 76-102) is centred
+  Container: 165px wide x 44px tall → clips to GAINAGE text only
 {%- endcomment -%}
 
 <div class="gainage-wordmark">
   <a href="{{ routes.root_url }}" class="gainage-wordmark__link" aria-label="GAINAGE — Home">
-    <div class="gainage-wordmark__clip">
-      <img
-        src="{{ 'GAINAGE Classic LOGO white .svg' | asset_url }}"
-        alt="GAINAGE"
-        class="gainage-wordmark__logo"
-        width="210"
-        height="175"
-        loading="eager"
-      >
-    </div>
+    <div
+      class="gainage-wordmark__bg"
+      style="background-image: url('{{ 'GAINAGE Classic LOGO white .svg' | asset_url }}');"
+      role="img"
+      aria-label="GAINAGE"
+    ></div>
   </a>
 </div>
 
@@ -30,23 +29,11 @@
     display: block;
   }
 
-  /* Clip container — crops to GAINAGE text only (no tagline, no side whitespace).
-     SVG is 864x720; at display width 210px it renders 175px tall.
-     X: G starts at SVG x=183 → display x=44.5px; shift left -44px so G is flush left.
-     Y: text band is SVG y=282-464 → display y=69-113px; clip 44px tall at top:-69px. */
-  .gainage-wordmark__clip {
-    position: relative;
-    width: 160px;
+  .gainage-wordmark__bg {
+    width: 165px;
     height: 44px;
-    overflow: hidden;
-  }
-
-  .gainage-wordmark__logo {
-    position: absolute;
-    top: -69px;
-    left: -44px;
-    width: 210px;
-    height: 175px;
-    display: block;
+    background-size: 210px 175px;
+    background-repeat: no-repeat;
+    background-position: -44px -69px;
   }
 </style>
