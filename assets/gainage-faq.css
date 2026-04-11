@@ -35,7 +35,8 @@
 }
 
 .gainage-faq__question:hover {
-  opacity: 0.8;
+  color: var(--g-color-accent);
+  opacity: 1;
 }
 
 .gainage-faq__icon {

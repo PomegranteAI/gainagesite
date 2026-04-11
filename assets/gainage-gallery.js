@@ -1,6 +1,6 @@
 /* ==========================================================================
    GAINAGE Gallery JS
-   Desktop: thumbnail click swaps main image
+   Desktop: scroll-snap carousel with arrow controls + thumbnail sync
    Mobile: scrollBy arrow controls
    ========================================================================== */
 
@@ -9,22 +9,49 @@
 
   /* ---------- Desktop gallery ---------- */
   document.querySelectorAll('[data-gallery]').forEach(function (gallery) {
-    var images = gallery.querySelectorAll('.gainage-gallery-desktop__image');
+    var track = gallery.querySelector('.gainage-gallery-desktop__track');
     var thumbs = gallery.querySelectorAll('.gainage-gallery-desktop__thumb');
+    var prevBtn = gallery.querySelector('[data-gallery-prev]');
+    var nextBtn = gallery.querySelector('[data-gallery-next]');
 
-    thumbs.forEach(function (thumb) {
+    if (!track) return;
+
+    function scrollToSlide(index) {
+      var slideWidth = track.offsetWidth;
+      track.scrollTo({ left: slideWidth * index, behavior: 'smooth' });
+      thumbs.forEach(function (t, i) {
+        t.classList.toggle('is-active', i === index);
+      });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', function () {
+        var index = Math.round(track.scrollLeft / track.offsetWidth);
+        scrollToSlide(Math.max(0, index - 1));
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', function () {
+        var slideCount = track.querySelectorAll('.gainage-gallery-desktop__slide').length;
+        var index = Math.round(track.scrollLeft / track.offsetWidth);
+        scrollToSlide(Math.min(slideCount - 1, index + 1));
+      });
+    }
+
+    thumbs.forEach(function (thumb, i) {
       thumb.addEventListener('click', function () {
-        var index = this.getAttribute('data-thumb-index');
-
-        images.forEach(function (img) {
-          img.classList.toggle('is-active', img.getAttribute('data-media-index') === index);
-        });
-
-        thumbs.forEach(function (t) {
-          t.classList.toggle('is-active', t.getAttribute('data-thumb-index') === index);
-        });
+        scrollToSlide(i);
       });
     });
+
+    /* Sync thumbnail active state on manual scroll */
+    track.addEventListener('scroll', function () {
+      var index = Math.round(track.scrollLeft / track.offsetWidth);
+      thumbs.forEach(function (t, i) {
+        t.classList.toggle('is-active', i === index);
+      });
+    }, { passive: true });
   });
 
   /* ---------- Mobile gallery ---------- */

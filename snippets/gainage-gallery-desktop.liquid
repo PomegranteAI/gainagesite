@@ -1,29 +1,39 @@
 {%- comment -%}
   GAINAGE Gallery — Desktop
-  Main image + thumbnail strip below
+  Horizontal scroll-snap carousel with arrow controls + thumbnails
   Usage: {% render 'gainage-gallery-desktop', product: product %}
 {%- endcomment -%}
 
 <div class="gainage-gallery-desktop" data-gallery>
-  <!-- Main image -->
-  <div class="gainage-gallery-desktop__main">
+  <!-- Carousel track -->
+  <div class="gainage-gallery-desktop__track">
     {%- for media in product.media -%}
       {%- if media.media_type == 'image' -%}
-        <img
-          src="{{ media | image_url: width: 800 }}"
-          alt="{{ media.alt | escape | default: product.title }}"
-          width="800"
-          height="{{ 800 | divided_by: media.aspect_ratio | round }}"
-          class="gainage-gallery-desktop__image{% if forloop.first %} is-active{% endif %}"
-          data-media-index="{{ forloop.index0 }}"
-          loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-        >
+        <div class="gainage-gallery-desktop__slide">
+          <img
+            src="{{ media | image_url: width: 800 }}"
+            alt="{{ media.alt | escape | default: product.title }}"
+            width="800"
+            height="{{ 800 | divided_by: media.aspect_ratio | round }}"
+            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+          >
+        </div>
       {%- endif -%}
     {%- endfor -%}
   </div>
 
-  <!-- Thumbnails -->
   {%- if product.media.size > 1 -%}
+    <!-- Arrow controls -->
+    <div class="gainage-gallery-desktop__controls">
+      <button type="button" class="gainage-gallery-desktop__arrow gainage-gallery-desktop__arrow--prev" data-gallery-prev aria-label="Previous image">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button type="button" class="gainage-gallery-desktop__arrow gainage-gallery-desktop__arrow--next" data-gallery-next aria-label="Next image">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+    </div>
+
+    <!-- Thumbnails -->
     <div class="gainage-gallery-desktop__thumbs">
       {%- for media in product.media -%}
         {%- if media.media_type == 'image' -%}

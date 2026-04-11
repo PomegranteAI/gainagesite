@@ -21,24 +21,56 @@
 }
 
 /* Desktop gallery */
-.gainage-gallery-desktop__main {
-  position: relative;
+.gainage-gallery-desktop__track {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
   margin-bottom: 12px;
 }
 
-.gainage-gallery-desktop__image {
-  width: 100%;
-  height: auto;
+.gainage-gallery-desktop__track::-webkit-scrollbar {
   display: none;
 }
 
-.gainage-gallery-desktop__image.is-active {
+.gainage-gallery-desktop__slide {
+  flex: 0 0 100%;
+  scroll-snap-align: start;
+}
+
+.gainage-gallery-desktop__slide img {
+  width: 100%;
+  height: auto;
   display: block;
+}
+
+.gainage-gallery-desktop__controls {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  padding: 8px 0;
+}
+
+.gainage-gallery-desktop__arrow {
+  background: none;
+  border: 1px solid var(--g-color-secondary);
+  color: var(--g-color-text);
+  padding: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 150ms ease;
+}
+
+.gainage-gallery-desktop__arrow:hover {
+  border-color: var(--g-color-text);
 }
 
 .gainage-gallery-desktop__thumbs {
   display: flex;
   gap: 8px;
+  margin-top: 8px;
 }
 
 .gainage-gallery-desktop__thumb {
@@ -127,12 +159,12 @@
 
 /* Specs */
 .gainage-specs {
-  text-align: center;
+  text-align: left;
   margin-bottom: 32px;
 }
 
 .gainage-specs__line {
-  font-size: 0.7rem;
+  font-size: 13px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin: 0;
@@ -146,7 +178,7 @@
 }
 
 .gainage-sizes__label {
-  font-size: 0.7rem;
+  font-size: 13px;
   letter-spacing: 0.1em;
   margin: 0 0 12px;
   color: var(--g-color-text);
@@ -154,13 +186,16 @@
 
 .gainage-sizes__options {
   display: flex;
+  flex-wrap: wrap;
   gap: 0;
+  width: fit-content;
 }
 
 .gainage-sizes__pill {
-  flex: 1;
-  padding: 12px 16px;
-  font-size: 0.85rem;
+  flex: 0 0 auto;
+  width: 52px;
+  padding: 8px 0;
+  font-size: 15px;
   letter-spacing: 0.05em;
   background: var(--g-color-bg);
   color: var(--g-color-text);
@@ -192,22 +227,21 @@
 }
 
 .gainage-buy-form__submit {
-  width: 100%;
-  max-width: 300px;
-  padding: 14px 24px;
-  font-size: 0.85rem;
+  width: auto;
+  padding: 10px 20px;
+  font-size: 13px;
   letter-spacing: 0.1em;
   background: var(--g-color-bg);
-  color: var(--g-color-accent);
-  border: 1px solid var(--g-color-accent);
+  color: var(--g-color-green);
+  border: 1px solid var(--g-color-green);
   cursor: pointer;
   transition: border-color 150ms ease, color 150ms ease;
   font-family: var(--g-font-display);
 }
 
 .gainage-buy-form__submit:hover {
-  border-color: var(--g-color-accent-hover);
-  color: var(--g-color-accent-hover);
+  border-color: #008800;
+  color: #008800;
 }
 
 .gainage-buy-form__submit:disabled {
@@ -222,17 +256,18 @@
   margin-top: 20px;
 }
 
-.gainage-buy-form__link {
+.gainage-buy-form__links .gainage-buy-form__link,
+.gainage-buy-form__links .gainage-buy-form__link:visited {
   font-size: 0.7rem;
   letter-spacing: 0.08em;
-  color: var(--g-color-accent);
-  text-decoration: underline;
+  color: var(--g-color-accent) !important;
+  text-decoration: underline !important;
   text-underline-offset: 3px;
   transition: color 150ms ease;
 }
 
-.gainage-buy-form__link:hover {
-  color: var(--g-color-accent-hover);
+.gainage-buy-form__links .gainage-buy-form__link:hover {
+  color: var(--g-color-accent-hover) !important;
 }
 
 /* Responsive */
@@ -255,7 +290,7 @@
   }
 
   .gainage-product__title {
-    font-size: 1.2rem;
+    font-size: 20px;
   }
 
   .gainage-product__price {

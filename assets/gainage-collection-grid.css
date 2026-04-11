@@ -42,7 +42,7 @@
   width: 100%;
   height: auto;
   display: block;
-  transition: filter 150ms ease;
+  transition: filter 200ms ease;
 }
 
 .gainage-card__img--hover {
@@ -52,11 +52,11 @@
   height: 100%;
   object-fit: cover;
   opacity: 0;
-  transition: opacity 150ms ease;
+  transition: opacity 200ms ease;
 }
 
 .gainage-card:hover .gainage-card__img--primary {
-  filter: brightness(1.1);
+  opacity: 0;
 }
 
 .gainage-card:hover .gainage-card__img--hover {

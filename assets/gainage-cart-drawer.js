@@ -9,17 +9,27 @@
   var drawer = document.getElementById('gainage-cart-drawer');
   if (!drawer) return;
 
+  var blurTargets = [
+    document.querySelector('.gainage-icon-bar'),
+    document.querySelector('.gainage-topnav'),
+    document.querySelector('.gainage-sidebar'),
+    document.querySelector('.gainage-content-wrapper'),
+    document.querySelector('main')
+  ].filter(Boolean);
+
   /* ---------- Open / Close ---------- */
   function openDrawer() {
     drawer.classList.add('is-open');
     drawer.setAttribute('aria-hidden', 'false');
     document.body.style.overflow = 'hidden';
+    blurTargets.forEach(function (el) { el.classList.add('gainage-drawer-blur'); });
   }
 
   function closeDrawer() {
     drawer.classList.remove('is-open');
     drawer.setAttribute('aria-hidden', 'true');
     document.body.style.overflow = '';
+    blurTargets.forEach(function (el) { el.classList.remove('gainage-drawer-blur'); });
   }
 
   // Event listeners for close buttons and overlay

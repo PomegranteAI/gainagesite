@@ -15,10 +15,10 @@
             {%- if item.image -%}
               <a href="{{ item.url }}">
                 <img
-                  src="{{ item.image | image_url: width: 160 }}"
+                  src="{{ item.image | image_url: width: 240 }}"
                   alt="{{ item.image.alt | escape | default: item.product.title }}"
-                  width="160"
-                  height="{{ 160 | divided_by: item.image.aspect_ratio | round }}"
+                  width="240"
+                  height="{{ 240 | divided_by: item.image.aspect_ratio | round }}"
                   loading="lazy"
                 >
               </a>
@@ -58,7 +58,7 @@
 
       <label class="gainage-cart-page__terms">
         <input type="checkbox" class="gainage-cart-page__terms-check" data-terms-check>
-        <span class="g-body">I agree to the terms and conditions</span>
+        <span class="g-display">I AGREE TO THE TERMS AND CONDITIONS</span>
       </label>
 
       <a href="/checkout" class="gainage-cart-page__checkout g-display" data-checkout-btn aria-disabled="true">CHECKOUT</a>

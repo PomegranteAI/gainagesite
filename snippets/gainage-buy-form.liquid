@@ -9,10 +9,10 @@
   <button
     type="submit"
     class="gainage-buy-form__submit g-display"
-    {% unless product.available %}disabled aria-disabled="true"{% endunless %}
+    {% if product.available %}disabled aria-disabled="true"{% else %}disabled aria-disabled="true"{% endif %}
   >
     {%- if product.available -%}
-      ADD TO CART
+      CHOOSE SIZE
     {%- else -%}
       SOLD OUT
     {%- endif -%}

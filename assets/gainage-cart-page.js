@@ -17,10 +17,8 @@
       check.addEventListener('change', function () {
         if (this.checked) {
           btn.removeAttribute('aria-disabled');
-          btn.style.pointerEvents = '';
         } else {
           btn.setAttribute('aria-disabled', 'true');
-          btn.style.pointerEvents = 'none';
         }
       });
     }

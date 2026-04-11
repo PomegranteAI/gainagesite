@@ -28,9 +28,9 @@
           variantInput.value = variantId;
         }
 
-        // Enable ATC button
+        // Enable ATC button and update label
         var atcButton = document.querySelector('.gainage-buy-form__submit');
-        if (atcButton) {
+        if (atcButton && atcButton.textContent.trim() !== 'SOLD OUT') {
           atcButton.disabled = false;
           atcButton.removeAttribute('aria-disabled');
           atcButton.textContent = 'ADD TO CART';
