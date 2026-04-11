@@ -1,5 +1,12 @@
 # GAINAGE — CLAUDE.md
 
+## Always Do First
+- **Invoke the `frontend-design` skill** before writing any frontend code, every session, no exceptions.
+- **Check `brand_assets/`** for logos, SVGs, and colour swatches before designing anything. Use them. Do not invent brand assets.
+- **Check `design-reference/`** screenshots before building any page or section. Match them exactly — do not improve or add to the design.
+
+---
+
 ## Project
 
 GAINAGE — gym apparel DTC brand on Shopify. Drop-based model organised by **Iterations** (e.g. Iteration 001). Multi-SKU collections (pump covers, tees, hoodies). Store: `gainage.myshopify.com`. Domain: `www.gainage.com`.
@@ -18,6 +25,39 @@ shopify theme list                                      # List themes
 ```
 
 Requires Node.js 18+, Shopify CLI. No local Liquid rendering — dev server requires internet.
+
+---
+
+## Screenshot & Comparison Workflow
+
+### Dev Server
+- **Always use the Shopify dev server** — never screenshot a `file:///` URL.
+- Start the dev server before taking any screenshots: `shopify theme dev --store gainage.myshopify.com`
+- The dev server runs at `http://127.0.0.1:9292` by default.
+- If the server is already running, do not start a second instance.
+
+### Screenshot Process
+When building or modifying any page or section:
+
+1. Ensure `shopify theme dev` is running and serving at `http://127.0.0.1:9292`.
+2. Build the initial output and push changes so the dev server reflects them.
+3. Screenshot the relevant page (e.g. `http://127.0.0.1:9292/password`, `http://127.0.0.1:9292/products/[handle]`).
+4. Read the screenshot and compare directly against the relevant `design-reference/` image.
+5. Be specific when comparing: "heading is 32px but reference shows ~24px", "card gap is 16px but should be 24px", "accent colour is wrong — should be `#FFA500`".
+6. Fix all mismatches. Re-screenshot.
+7. Do **at least 2 comparison rounds**. Stop only when no visible differences remain or the user says so.
+
+### Check on Every Pass
+- Spacing and padding
+- Font size, weight, letter-spacing, line-height
+- Exact hex colour values (especially accent gold `#FFA500`)
+- Alignment (especially left-nav vertical stack on desktop)
+- Border-radius (0px everywhere — no exceptions)
+- Shadows and overlays
+- Image sizing and cropping
+- Mobile layout (price and ATC above fold)
+
+---
 
 ## Architecture
 
@@ -64,6 +104,8 @@ Out of scope: lookbook, blog, loyalty programme, account portal (beyond Dawn def
 - **Password page:** Email submit POSTs to Klaviyo or Shopify newsletter form. No JS redirect needed — password page is Shopify native with custom template.
 - **Free shipping bar:** Reads `cart.total_price`, calculates % toward threshold, updates CSS `width` on bar fill element.
 
+---
+
 ## Design System
 
 ### Colours
@@ -109,12 +151,29 @@ Single breakpoint: `1024px`. Mobile-first. Price and ATC must be above fold on m
 - Product card: brightness `1.1` on hover, 150ms.
 - Cart drawer: slide-in 300ms ease.
 - Size pill: instant state swap on click.
-- Nothing else. 0px border-radius everywhere except size pills (0px).
+- Nothing else. 0px border-radius everywhere except size pills.
 
 ### Logo / Icon
 
 - **Icon mark:** Stylised "G" with arrow/slash through it (SVG inline). Centred in header bar at top.
 - **Wordmark:** "GAINAGE" in condensed bold display font, top-left. Tagline "A SEVERE ADDICTION TO PROGRESS" in small body font directly below wordmark.
+
+---
+
+## Anti-Generic Design Guardrails
+
+These rules stop lazy or AI-default design decisions from entering the codebase.
+
+- **Colours:** Never invent colours outside the design system tokens above. Never use Tailwind default palette (indigo-500, blue-600, etc.).
+- **Shadows:** Never use flat `shadow-md`. If shadows are used they must be colour-tinted with low opacity, consistent with the black/dark palette.
+- **Animations:** Only animate `transform` and `opacity`. Never use `transition-all`. Easing should feel deliberate — not bouncy or playful. GAINAGE is direct and controlled.
+- **Interactive states:** Every clickable element needs hover, focus-visible, and active states defined. No exceptions.
+- **Border-radius:** 0px everywhere. Size pills: 0px. Buttons: 0px. Cards: 0px. This is non-negotiable to the brand aesthetic.
+- **Typography:** Never introduce a third font. Never use system fonts for display text. Always uppercase for `.g-display` contexts.
+- **Spacing:** Use the defined spacing tokens. Do not use random Tailwind steps that break the grid.
+- **Images:** Hero images may use a gradient overlay (`bg-gradient-to-t from-black/60`) where copy sits over them. Do not add colour treatment layers that alter brand colours.
+
+---
 
 ## Layout Patterns
 
@@ -182,6 +241,8 @@ Cart drawer background: `#FFA500`. All text on cart: `#000`. Buttons: black bg, 
   CLICK FOR PASSWORD ACCESS
 ```
 
+---
+
 ## Brand Voice
 
 Direct. No-nonsense. Training-first. State the material and what it does — stop there.
@@ -196,6 +257,8 @@ Direct. No-nonsense. Training-first. State the material and what it does — sto
 - Never reference competitors.
 - Drop/Iteration framing: products belong to an Iteration (e.g. "ITERATION 001"). This is core to the brand identity and must be surfaced in collection labels, product subtitles, and cart line items.
 
+---
+
 ## Iteration / Drop Model
 
 - Products are grouped into **Iterations** (drops). Current: **Iteration 001**.
@@ -203,6 +266,8 @@ Direct. No-nonsense. Training-first. State the material and what it does — sto
 - Navigation label format: `ITERATION 1 (SHOP)` — gold "ITERATION 1", white "(SHOP)".
 - Future iterations get their own collection. Navigation updates to reflect active iteration.
 - Product tags: `iteration-001`, category tags: `pump-cover`, `tee`, `hoodie`, etc.
+
+---
 
 ## Key Metafields
 
@@ -212,14 +277,33 @@ Direct. No-nonsense. Training-first. State the material and what it does — sto
 | `custom.iteration` | Single-line text | e.g. "ITERATION 001" — shown under product name on cards |
 | `custom.size_chart_image` | File (image) | Size chart image per product or collection |
 
+---
+
 ## Currency & Region
 
 - **Currency:** GBP (£)
 - **Region:** UK primary market
 - Prices displayed as `£XX` — no decimals unless pence apply.
 
+---
+
 ## Reference Docs
 
 - `design-reference/` — Screenshots of password page, product page, collection page, cart drawer
 - `brand-assets/` — G-icon SVG, GAINAGE wordmark SVG, approved colour swatches
 - `copy/` — Approved product copy per Iteration
+
+---
+
+## Hard Rules
+
+- Do not add sections, features, or content not in the reference or explicitly requested
+- Do not "improve" a reference design — match it exactly
+- Do not stop after one screenshot comparison pass — minimum 2 rounds
+- Do not use `transition-all` under any circumstances
+- Do not use border-radius anywhere (0px is the brand standard)
+- Do not introduce colours outside the design system token list
+- Do not introduce a third font
+- Do not use Tailwind default colour palette as primary or accent colours
+- Do not write copy that uses any banned brand voice words
+- Do not surface student or customer data in URLs or query parameters
