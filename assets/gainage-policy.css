@@ -5,6 +5,8 @@
 .gainage-policy {
   padding: var(--g-margin-desktop) var(--g-margin-mobile);
   max-width: 800px;
+  margin: 0 auto;
+  transform: translateX(calc(-1 * var(--g-sidebar-width) / 2));
 }
 
 .gainage-policy__title {
@@ -19,6 +21,7 @@
   color: var(--g-color-text);
   font-size: 0.9rem;
   line-height: 1.7;
+  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
 }
 
 .gainage-policy__content h2,
@@ -75,5 +78,7 @@
 @media (max-width: 1023px) {
   .gainage-policy {
     padding: var(--g-margin-mobile);
+    transform: none;
+    margin: 0 auto;
   }
 }
