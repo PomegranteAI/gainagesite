@@ -22,7 +22,7 @@
     {%- if cart_total >= threshold_cents -%}
       YOU'VE UNLOCKED FREE SHIPPING
     {%- else -%}
-      {{ remaining_cents | money_without_trailing_zeros }} AWAY FROM FREE SHIPPING
+      {{ remaining_cents | money }} AWAY FROM FREE SHIPPING
     {%- endif -%}
   </p>
 </div>

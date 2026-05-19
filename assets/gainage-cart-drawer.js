@@ -209,11 +209,7 @@
 
   /* ---------- Format Money ---------- */
   function formatMoney(cents) {
-    var amount = cents / 100;
-    if (amount === Math.floor(amount)) {
-      return '£' + amount.toFixed(0);
-    }
-    return '£' + amount.toFixed(2);
+    return '£' + (cents / 100).toFixed(2);
   }
 
 })();

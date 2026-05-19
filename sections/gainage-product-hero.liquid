@@ -20,7 +20,7 @@
     <h1 class="gainage-product__title g-display">{{ product.title }}</h1>
 
     <p class="gainage-product__price g-display">
-      {{ product.price | money_without_trailing_zeros }}
+      {{ product.price | money }}
     </p>
 
     {% render 'gainage-product-specs', product: product %}
