@@ -13,12 +13,17 @@
     <!-- Header -->
     <div class="gainage-drawer__header">
       <span class="gainage-drawer__title g-display">YOUR CART</span>
-      <span class="gainage-drawer__count g-display" data-drawer-count>{{ cart.item_count }} {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }}</span>
-      <button class="gainage-drawer__close" type="button" data-drawer-close aria-label="Close cart">
-        <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
-          <line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/>
-        </svg>
-      </button>
+      <div class="gainage-drawer__logo">
+        <img src="{{ 'medievial.svg' | asset_url }}" alt="GAINAGE" width="120" height="auto" loading="eager">
+      </div>
+      <div class="gainage-drawer__header-right">
+        <span class="gainage-drawer__count g-display" data-drawer-count>{{ cart.item_count }} {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }}</span>
+        <button class="gainage-drawer__close" type="button" data-drawer-close aria-label="Close cart">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="4" y1="4" x2="16" y2="16"/><line x1="16" y1="4" x2="4" y2="16"/>
+          </svg>
+        </button>
+      </div>
     </div>
 
     <!-- Free shipping bar -->

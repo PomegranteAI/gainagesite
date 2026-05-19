@@ -60,21 +60,40 @@
 
 /* Header */
 .gainage-drawer__header {
-  display: flex;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  padding: 20px;
+  padding: 16px 20px;
   gap: 8px;
 }
 
 .gainage-drawer__title {
-  font-size: 1rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
 }
 
+.gainage-drawer__logo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.gainage-drawer__logo img {
+  display: block;
+  height: 36px;
+  width: auto;
+}
+
+.gainage-drawer__header-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 8px;
+}
+
 .gainage-drawer__count {
-  font-size: 0.9rem;
+  font-size: 0.8rem;
   letter-spacing: 0.1em;
-  margin-left: auto;
 }
 
 .gainage-drawer__close {
@@ -83,7 +102,6 @@
   color: var(--g-color-cart-text);
   cursor: pointer;
   padding: 4px;
-  margin-left: 12px;
 }
 
 /* Free shipping bar */
