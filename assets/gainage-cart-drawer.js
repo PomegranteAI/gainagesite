@@ -157,6 +157,9 @@
         if (newFooter && currentFooter) {
           currentFooter.innerHTML = newFooter.innerHTML;
           rebindTermsCheckbox();
+        } else if (newFooter && !currentFooter) {
+          drawer.querySelector('.gainage-drawer__panel').appendChild(newFooter);
+          rebindTermsCheckbox();
         } else if (!newFooter && currentFooter) {
           currentFooter.remove();
         }
