@@ -125,7 +125,8 @@
 
 .gainage-gallery-mobile__controls {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 12px;
   padding: 12px 0;
 }
 
@@ -164,7 +165,7 @@
 }
 
 .gainage-specs__line {
-  font-size: 13px;
+  font-size: 11px;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   margin: 0;
@@ -219,6 +220,56 @@
   opacity: 0.35;
   text-decoration: line-through;
   cursor: not-allowed;
+}
+
+/* Quantity selector */
+.gainage-qty {
+  display: flex;
+  align-items: stretch;
+  margin-bottom: 12px;
+  width: fit-content;
+}
+
+.gainage-qty__btn {
+  width: 40px;
+  background: var(--g-color-bg);
+  color: var(--g-color-text);
+  border: 1px solid var(--g-color-size-border);
+  font-size: 18px;
+  cursor: pointer;
+  transition: background-color 150ms ease, color 150ms ease;
+  line-height: 1;
+  padding: 0;
+}
+
+.gainage-qty__btn:hover {
+  background: var(--g-color-text);
+  color: var(--g-color-bg);
+}
+
+.gainage-qty__btn:active {
+  background: var(--g-color-secondary);
+  color: var(--g-color-text);
+}
+
+.gainage-qty__input {
+  width: 52px;
+  text-align: center;
+  background: var(--g-color-bg);
+  color: var(--g-color-text);
+  border: 1px solid var(--g-color-size-border);
+  border-left: none;
+  border-right: none;
+  font-size: 13px;
+  letter-spacing: 0.1em;
+  font-family: var(--g-font-display);
+  -moz-appearance: textfield;
+  padding: 8px 0;
+}
+
+.gainage-qty__input::-webkit-outer-spin-button,
+.gainage-qty__input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
 }
 
 /* Buy form */
@@ -298,3 +349,4 @@
     margin-bottom: 20px;
   }
 }
+

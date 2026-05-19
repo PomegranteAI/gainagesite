@@ -6,6 +6,21 @@
 (function () {
   'use strict';
 
+  // Wire up quantity +/− buttons
+  document.querySelectorAll('[data-buy-form]').forEach(function (form) {
+    var qtyInput = form.querySelector('.gainage-qty__input');
+
+    form.querySelector('[data-qty-minus]') && form.querySelector('[data-qty-minus]').addEventListener('click', function () {
+      var val = parseInt(qtyInput.value, 10) || 1;
+      if (val > 1) qtyInput.value = val - 1;
+    });
+
+    form.querySelector('[data-qty-plus]') && form.querySelector('[data-qty-plus]').addEventListener('click', function () {
+      var val = parseInt(qtyInput.value, 10) || 1;
+      qtyInput.value = val + 1;
+    });
+  });
+
   document.querySelectorAll('[data-buy-form]').forEach(function (form) {
     form.addEventListener('submit', function (e) {
       e.preventDefault();
@@ -34,10 +49,13 @@
         submitBtn.textContent = 'ADDING...';
       }
 
+      var qtyInput = form.querySelector('.gainage-qty__input');
+      var qty = qtyInput ? (parseInt(qtyInput.value, 10) || 1) : 1;
+
       var formData = {
         items: [{
           id: parseInt(variantInput.value, 10),
-          quantity: 1
+          quantity: qty
         }]
       };
 

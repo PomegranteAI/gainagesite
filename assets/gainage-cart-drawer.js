@@ -44,8 +44,20 @@
     }
   });
 
-  // Custom event to open
-  document.addEventListener('cart:open', openDrawer);
+  // Custom event to open — also sync bar with live cart
+  document.addEventListener('cart:open', function () {
+    openDrawer();
+    fetch(window.routes.cart_url + '.js', { headers: { 'Content-Type': 'application/json' } })
+      .then(function (r) { return r.json(); })
+      .then(function (cart) { updateShippingBar(cart.total_price); });
+  });
+
+  // Refresh drawer contents whenever cart changes (e.g. add-to-cart from product page)
+  document.addEventListener('cart:updated', function (e) {
+    if (e.detail && e.detail.cart) {
+      refreshDrawer(e.detail.cart);
+    }
+  });
 
   /* ---------- T&C Checkbox ---------- */
   var termsCheck = drawer.querySelector('[data-terms-check]');
@@ -62,6 +74,14 @@
       }
     });
   }
+
+  /* ---------- Delete Item ---------- */
+  drawer.addEventListener('click', function (e) {
+    var btn = e.target.closest('[data-line-delete]');
+    if (!btn) return;
+    var lineKey = btn.getAttribute('data-line-key');
+    updateCartItem(lineKey, 0);
+  });
 
   /* ---------- Qty Update ---------- */
   drawer.addEventListener('click', function (e) {
@@ -120,7 +140,7 @@
     // Update free shipping bar
     updateShippingBar(cart.total_price);
 
-    // Re-render items via Section Rendering API
+    // Re-render items and footer via Section Rendering API
     fetch(window.location.pathname + '?section_id=gainage-cart-drawer')
       .then(function (r) { return r.text(); })
       .then(function (html) {
@@ -140,6 +160,9 @@
         } else if (!newFooter && currentFooter) {
           currentFooter.remove();
         }
+
+        // Re-apply bar update after DOM swap in case elements were touched
+        updateShippingBar(cart.total_price);
       });
   }
 
@@ -170,6 +193,7 @@
     var pct = Math.min((totalPrice / threshold) * 100, 100);
 
     if (fill) fill.style.width = pct + '%';
+    bar.classList.toggle('gainage-shipping-bar--unlocked', totalPrice >= threshold);
     if (text) {
       if (totalPrice >= threshold) {
         text.textContent = "YOU'VE UNLOCKED FREE SHIPPING";

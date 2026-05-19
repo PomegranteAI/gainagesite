@@ -6,6 +6,19 @@
 {%- form 'product', product, class: 'gainage-buy-form', data-buy-form: '', novalidate: 'novalidate' -%}
   <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}" data-variant-input>
 
+  <div class="gainage-qty">
+    <button type="button" class="gainage-qty__btn g-display" data-qty-minus aria-label="Decrease quantity">−</button>
+    <input
+      type="number"
+      name="quantity"
+      value="1"
+      min="1"
+      class="gainage-qty__input g-display"
+      aria-label="Quantity"
+    >
+    <button type="button" class="gainage-qty__btn g-display" data-qty-plus aria-label="Increase quantity">+</button>
+  </div>
+
   <button
     type="submit"
     class="gainage-buy-form__submit g-display"
