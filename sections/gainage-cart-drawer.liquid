@@ -14,7 +14,9 @@
     <div class="gainage-drawer__header">
       <span class="gainage-drawer__title g-display">YOUR CART</span>
       <div class="gainage-drawer__logo">
-        <img src="{{ 'medievial.svg' | asset_url }}" alt="GAINAGE" width="120" height="auto" loading="eager">
+        <a href="{{ routes.root_url }}" data-drawer-close aria-label="Home">
+          <img src="{{ 'medievial.svg' | asset_url }}" alt="GAINAGE" width="120" height="auto" loading="eager">
+        </a>
       </div>
       <div class="gainage-drawer__header-right">
         <span class="gainage-drawer__count g-display" data-drawer-count>{{ cart.item_count }} {{ cart.item_count | pluralize: 'ITEM', 'ITEMS' }}</span>
