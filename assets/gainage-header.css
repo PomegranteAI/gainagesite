@@ -65,7 +65,6 @@
   left: 0;
   right: 0;
   background: var(--g-color-bg);
-  border-bottom: 1px solid var(--g-color-separator);
   z-index: 300;
   padding: 24px var(--g-margin-mobile);
   transform: translateY(-110%);
@@ -98,13 +97,16 @@
 .gainage-search-panel__input {
   flex: 1;
   background: none;
-  border: none;
+  border: none !important;
+  outline: none !important;
+  box-shadow: none !important;
   color: var(--g-color-text);
   font-size: 1rem;
   letter-spacing: 0.1em;
-  outline: none;
   font-family: var(--g-font-display);
   text-transform: uppercase;
+  -webkit-appearance: none;
+  appearance: none;
 }
 
 .gainage-search-panel__input::placeholder {
