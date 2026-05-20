@@ -59,6 +59,10 @@
   gap: 6px;
 }
 
+.gainage-topnav__cart [data-cart-count] {
+  color: var(--g-color-accent);
+}
+
 .gainage-topnav__right {
   display: flex;
   align-items: center;
