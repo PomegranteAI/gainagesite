@@ -393,6 +393,13 @@
   padding: 10px 16px !important;
   font-size: 0.75rem !important;
   letter-spacing: 0.05em;
+  background: #FFFFFF !important;
+  color: #000000 !important;
+}
+
+.gainage-buy-form__dynamic-checkout .shopify-payment-button__button--branded {
+  background: #FFFFFF !important;
+  color: #000000 !important;
 }
 
 .gainage-buy-form__dynamic-checkout .shopify-payment-button__more-options {
