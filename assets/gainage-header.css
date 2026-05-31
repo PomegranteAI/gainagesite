@@ -271,6 +271,28 @@
   pointer-events: auto;
 }
 
+.gainage-sidebar__close {
+  display: none;
+  background: none;
+  border: none;
+  color: var(--g-color-text);
+  cursor: pointer;
+  padding: 0;
+  align-self: flex-end;
+  margin-bottom: 16px;
+  transition: color 150ms ease;
+}
+
+.gainage-sidebar__close:hover {
+  color: var(--g-color-accent);
+}
+
+@media (max-width: 1023px) {
+  .gainage-sidebar__close {
+    display: flex;
+  }
+}
+
 .gainage-sidebar__brand {
   margin-bottom: 16px;
 }

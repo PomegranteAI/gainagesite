@@ -100,6 +100,41 @@
 }
 
 /* Mobile gallery */
+/* Mobile thumbnails */
+.gainage-gallery-mobile__thumbs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.gainage-gallery-mobile__thumbs::-webkit-scrollbar {
+  display: none;
+}
+
+.gainage-gallery-mobile__thumb {
+  flex-shrink: 0;
+  width: 72px;
+  height: 72px;
+  padding: 0;
+  background: none;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: border-color 150ms ease;
+}
+
+.gainage-gallery-mobile__thumb.is-active {
+  border-color: var(--g-color-accent);
+}
+
+.gainage-gallery-mobile__thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
 .gainage-gallery-mobile__track {
   display: flex;
   overflow-x: auto;
@@ -222,6 +257,64 @@
   cursor: not-allowed;
 }
 
+/* Stock indicator */
+.gainage-stock {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 16px 0;
+}
+
+.gainage-stock__dot-wrap {
+  position: relative;
+  width: 20px;
+  height: 20px;
+  flex-shrink: 0;
+}
+
+.gainage-stock__dot {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: currentColor;
+}
+
+.gainage-stock__ring {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 2px solid currentColor;
+  opacity: 0.4;
+}
+
+.gainage-stock--low .gainage-stock__ring {
+  animation: gainage-stock-pulse 1.6s ease infinite;
+}
+
+@keyframes gainage-stock-pulse {
+  0%   { transform: scale(1);   opacity: 0.4; }
+  50%  { transform: scale(1.4); opacity: 0.15; }
+  100% { transform: scale(1);   opacity: 0.4; }
+}
+
+.gainage-stock--low  { color: var(--g-color-accent); }
+.gainage-stock--in   { color: var(--g-color-green); }
+.gainage-stock--out  { color: var(--g-color-secondary); }
+
+.gainage-stock__label {
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: currentColor;
+}
+
 /* Quantity selector */
 .gainage-qty {
   display: flex;
@@ -275,6 +368,35 @@
 /* Buy form */
 .gainage-buy-form {
   margin-bottom: 24px;
+}
+
+.gainage-buy-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: fit-content;
+}
+
+.gainage-buy-form__dynamic-checkout {
+  flex-shrink: 0;
+}
+
+.gainage-buy-form__dynamic-checkout .shopify-payment-button {
+  height: 100%;
+}
+
+.gainage-buy-form__dynamic-checkout .shopify-payment-button__button {
+  height: 100% !important;
+  min-height: 0 !important;
+  max-height: none !important;
+  border-radius: 0 !important;
+  padding: 10px 16px !important;
+  font-size: 0.75rem !important;
+  letter-spacing: 0.05em;
+}
+
+.gainage-buy-form__dynamic-checkout .shopify-payment-button__more-options {
+  display: none !important;
 }
 
 .gainage-buy-form__submit {

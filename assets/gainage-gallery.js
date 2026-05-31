@@ -57,20 +57,44 @@
   /* ---------- Mobile gallery ---------- */
   document.querySelectorAll('[data-gallery-mobile]').forEach(function (gallery) {
     var track = gallery.querySelector('.gainage-gallery-mobile__track');
+    var thumbs = gallery.querySelectorAll('[data-mobile-thumb]');
     var prevBtn = gallery.querySelector('[data-gallery-prev]');
     var nextBtn = gallery.querySelector('[data-gallery-next]');
+    var slideCount = track ? track.querySelectorAll('.gainage-gallery-mobile__slide').length : 0;
 
     if (!track) return;
 
+    function scrollToSlide(index) {
+      track.scrollTo({ left: track.offsetWidth * index, behavior: 'smooth' });
+      thumbs.forEach(function (t, i) {
+        t.classList.toggle('is-active', i === index);
+      });
+    }
+
+    thumbs.forEach(function (thumb, i) {
+      thumb.addEventListener('click', function () {
+        scrollToSlide(i);
+      });
+    });
+
+    track.addEventListener('scroll', function () {
+      var index = Math.round(track.scrollLeft / track.offsetWidth);
+      thumbs.forEach(function (t, i) {
+        t.classList.toggle('is-active', i === index);
+      });
+    }, { passive: true });
+
     if (prevBtn) {
       prevBtn.addEventListener('click', function () {
-        track.scrollBy({ left: -track.offsetWidth, behavior: 'smooth' });
+        var index = Math.round(track.scrollLeft / track.offsetWidth);
+        scrollToSlide(Math.max(0, index - 1));
       });
     }
 
     if (nextBtn) {
       nextBtn.addEventListener('click', function () {
-        track.scrollBy({ left: track.offsetWidth, behavior: 'smooth' });
+        var index = Math.round(track.scrollLeft / track.offsetWidth);
+        scrollToSlide(Math.min(slideCount - 1, index + 1));
       });
     }
   });

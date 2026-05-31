@@ -5,6 +5,7 @@
 {%- endcomment -%}
 
 <div class="gainage-gallery-mobile" data-gallery-mobile>
+
   <div class="gainage-gallery-mobile__track">
     {%- for media in product.media -%}
       {%- if media.media_type == 'image' -%}
@@ -20,6 +21,23 @@
       {%- endif -%}
     {%- endfor -%}
   </div>
+
+  {%- if product.media.size > 1 -%}
+    <div class="gainage-gallery-mobile__thumbs">
+      {%- for media in product.media -%}
+        {%- if media.media_type == 'image' -%}
+          <button type="button" class="gainage-gallery-mobile__thumb{% if forloop.first %} is-active{% endif %}" data-mobile-thumb="{{ forloop.index0 }}" aria-label="View image {{ forloop.index }}">
+            <img
+              src="{{ media | image_url: width: 120 }}"
+              alt="{{ media.alt | escape | default: product.title }}"
+              width="120"
+              loading="lazy"
+            >
+          </button>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
+  {%- endif -%}
 
   {%- if product.media.size > 1 -%}
     <div class="gainage-gallery-mobile__controls">

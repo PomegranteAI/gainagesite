@@ -19,17 +19,25 @@
     <button type="button" class="gainage-qty__btn g-display" data-qty-plus aria-label="Increase quantity">+</button>
   </div>
 
-  <button
-    type="submit"
-    class="gainage-buy-form__submit g-display"
-    {% if product.available %}disabled aria-disabled="true"{% else %}disabled aria-disabled="true"{% endif %}
-  >
+  <div class="gainage-buy-form__actions">
+    <button
+      type="submit"
+      class="gainage-buy-form__submit g-display"
+      {% if product.available %}disabled aria-disabled="true"{% else %}disabled aria-disabled="true"{% endif %}
+    >
+      {%- if product.available -%}
+        CHOOSE SIZE
+      {%- else -%}
+        SOLD OUT
+      {%- endif -%}
+    </button>
+
     {%- if product.available -%}
-      CHOOSE SIZE
-    {%- else -%}
-      SOLD OUT
+      <div class="gainage-buy-form__dynamic-checkout">
+        {{ form | payment_button }}
+      </div>
     {%- endif -%}
-  </button>
+  </div>
 
   <div class="gainage-buy-form__links">
     <a href="/pages/size-chart" class="gainage-buy-form__link g-display">SIZE CHART</a>

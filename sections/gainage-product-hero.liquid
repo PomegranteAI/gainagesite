@@ -23,9 +23,32 @@
       {{ product.price | money }}
     </p>
 
+    <!-- Stock indicator -->
+    <div class="gainage-stock" data-stock-indicator aria-live="polite">
+      <span class="gainage-stock__dot-wrap">
+        <span class="gainage-stock__dot"></span>
+        <span class="gainage-stock__ring"></span>
+      </span>
+      <span class="gainage-stock__label g-body" data-stock-label></span>
+    </div>
+
     {% render 'gainage-product-specs', product: product %}
 
     {% render 'gainage-size-selector', product: product %}
+
+    <!-- Variant inventory data -->
+    <script type="application/json" id="gainage-variant-data">
+      [
+        {%- for variant in product.variants -%}
+        {
+          "id": {{ variant.id }},
+          "available": {{ variant.available }},
+          "inventory_quantity": {{ variant.inventory_quantity }},
+          "inventory_management": {{ variant.inventory_management | json }}
+        }{% unless forloop.last %},{% endunless %}
+        {%- endfor -%}
+      ]
+    </script>
 
     {% render 'gainage-buy-form', product: product %}
   </div>
