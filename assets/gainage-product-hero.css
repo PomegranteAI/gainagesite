@@ -476,6 +476,10 @@
     display: block;
   }
 
+  .gainage-product__info {
+    padding-top: 0;
+  }
+
   .gainage-product__title {
     font-size: 20px;
   }
