@@ -43,7 +43,7 @@
                   alt="{{ item.image.alt | escape | default: item.product.title }}"
                   width="120"
                   height="{{ 120 | divided_by: item.image.aspect_ratio | round }}"
-                  loading="lazy"
+                  loading="eager"
                 >
               {%- endif -%}
             </div>
