@@ -182,6 +182,8 @@
   letter-spacing: 0.08em;
   margin: 0;
   color: #000000 !important;
+  flex: 1;
+  min-width: 0;
 }
 
 .gainage-drawer__item-price {
