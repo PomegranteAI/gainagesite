@@ -436,30 +436,6 @@
   cursor: not-allowed;
 }
 
-.gainage-buy-form__trust {
-  display: flex;
-  flex-direction: column;
-  gap: 6px;
-  margin-top: 20px;
-  margin-bottom: 12px;
-}
-
-.gainage-buy-form__trust-item {
-  display: flex;
-  align-items: center;
-  gap: 20px;
-  font-size: 12rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  color: var(--g-color-text);
-}
-
-.gainage-buy-form__trust-item svg {
-  width: 264px;
-  height: 264px;
-  flex-shrink: 0;
-}
-
 .gainage-buy-form__links {
   display: flex;
   flex-direction: column;
