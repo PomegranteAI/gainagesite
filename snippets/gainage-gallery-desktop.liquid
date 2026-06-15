@@ -11,10 +11,15 @@
       {%- if media.media_type == 'image' -%}
         <div class="gainage-gallery-desktop__slide">
           <img
-            src="{{ media | image_url: width: 800 }}"
+            src="{{ media | image_url: width: 1200 }}"
+            srcset="{{ media | image_url: width: 800 }} 800w,
+                    {{ media | image_url: width: 1000 }} 1000w,
+                    {{ media | image_url: width: 1200 }} 1200w,
+                    {{ media | image_url: width: 1500 }} 1500w"
+            sizes="50vw"
             alt="{{ media.alt | escape | default: product.title }}"
-            width="800"
-            height="{{ 800 | divided_by: media.aspect_ratio | round }}"
+            width="1200"
+            height="{{ 1200 | divided_by: media.aspect_ratio | round }}"
             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
           >
         </div>
@@ -45,6 +50,9 @@
           >
             <img
               src="{{ media | image_url: width: 160 }}"
+              srcset="{{ media | image_url: width: 160 }} 160w,
+                      {{ media | image_url: width: 320 }} 320w"
+              sizes="80px"
               alt=""
               width="160"
               height="{{ 160 | divided_by: media.aspect_ratio | round }}"

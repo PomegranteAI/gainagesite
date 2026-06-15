@@ -11,10 +11,14 @@
       {%- if media.media_type == 'image' -%}
         <div class="gainage-gallery-mobile__slide">
           <img
-            src="{{ media | image_url: width: 600 }}"
+            src="{{ media | image_url: width: 900 }}"
+            srcset="{{ media | image_url: width: 600 }} 600w,
+                    {{ media | image_url: width: 900 }} 900w,
+                    {{ media | image_url: width: 1200 }} 1200w"
+            sizes="100vw"
             alt="{{ media.alt | escape | default: product.title }}"
-            width="600"
-            height="{{ 600 | divided_by: media.aspect_ratio | round }}"
+            width="900"
+            height="{{ 900 | divided_by: media.aspect_ratio | round }}"
             loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
           >
         </div>
@@ -29,6 +33,9 @@
           <button type="button" class="gainage-gallery-mobile__thumb{% if forloop.first %} is-active{% endif %}" data-mobile-thumb="{{ forloop.index0 }}" aria-label="View image {{ forloop.index }}">
             <img
               src="{{ media | image_url: width: 120 }}"
+              srcset="{{ media | image_url: width: 120 }} 120w,
+                      {{ media | image_url: width: 240 }} 240w"
+              sizes="72px"
               alt="{{ media.alt | escape | default: product.title }}"
               width="120"
               loading="lazy"
