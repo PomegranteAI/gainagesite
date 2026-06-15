@@ -440,12 +440,12 @@
   display: flex;
   flex-direction: column;
   gap: 4px;
-  margin-top: 20px;
+  margin-top: 40px;
 }
 
 .gainage-buy-form__links .gainage-buy-form__link,
 .gainage-buy-form__links .gainage-buy-form__link:visited {
-  font-size: 2.1rem;
+  font-size: 1.4rem;
   letter-spacing: 0.08em;
   color: var(--g-color-accent) !important;
   text-decoration: underline !important;
