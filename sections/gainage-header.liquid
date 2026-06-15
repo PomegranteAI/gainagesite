@@ -20,14 +20,6 @@
     </button>
 
     <div class="gainage-topnav__right">
-      <!-- Search -->
-      <button type="button" class="gainage-topnav__item gainage-topnav__search g-display" data-search-toggle aria-expanded="false" aria-controls="gainage-search-panel">
-        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
-        </svg>
-        <span>SEARCH</span>
-      </button>
-
       <!-- Cart -->
       <a href="{{ routes.cart_url }}" class="gainage-topnav__item gainage-topnav__cart g-display" data-cart-toggle>
         <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
@@ -66,6 +58,7 @@
 
     <!-- Secondary nav -->
     <nav class="gainage-sidebar__nav gainage-sidebar__nav--secondary">
+      <button type="button" class="gainage-sidebar__link gainage-sidebar__search g-body" data-search-toggle aria-expanded="false" aria-controls="gainage-search-panel">SEARCH</button>
       <a href="/pages/shipping-policy" class="gainage-sidebar__link g-body">SHIPPING POLICY</a>
       <a href="/pages/terms-of-service" class="gainage-sidebar__link g-body">TERMS OF SERVICE</a>
       <a href="/account" class="gainage-sidebar__link g-body">ACCOUNT</a>

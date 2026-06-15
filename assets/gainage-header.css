@@ -43,20 +43,6 @@
   color: var(--g-color-accent) !important;
 }
 
-.gainage-topnav__search {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  border-top: none;
-  border-left: none;
-  border-right: none;
-  border-bottom: 1px solid currentColor;
-  padding-bottom: 2px;
-  padding-left: 16px;
-  padding-right: 24px;
-  background: none;
-  cursor: pointer;
-}
 
 /* Search panel */
 .gainage-search-panel {
@@ -324,6 +310,14 @@
 
 .gainage-sidebar__link:hover {
   color: var(--g-color-accent) !important;
+}
+
+.gainage-sidebar__search {
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-align: left;
+  padding: 4px 0;
 }
 
 .gainage-sidebar__link--iteration {
