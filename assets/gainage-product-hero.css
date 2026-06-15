@@ -447,11 +447,17 @@
 .gainage-buy-form__trust-item {
   display: flex;
   align-items: center;
-  gap: 7px;
-  font-size: 0.65rem;
+  gap: 10px;
+  font-size: 1rem;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--g-color-secondary);
+}
+
+.gainage-buy-form__trust-item svg {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
 }
 
 .gainage-buy-form__links {
