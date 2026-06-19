@@ -65,9 +65,8 @@
   display: flex;
   align-items: center;
   gap: 16px;
-  max-width: 1440px;
+  max-width: 720px;
   margin: 0 auto;
-  padding-left: max(var(--g-sidebar-width), calc(50vw - 720px + var(--g-sidebar-width)));
 }
 
 .gainage-search-panel__field {
