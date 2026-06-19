@@ -10,11 +10,12 @@
 }
 
 .gainage-policy__title {
-  font-size: 1.8rem;
+  font-size: 1.2rem;
   color: var(--g-color-text);
   margin: 0 0 32px;
   padding-bottom: 16px;
   border-bottom: 1px solid var(--g-color-separator);
+  text-align: center;
 }
 
 .gainage-policy__content {
@@ -22,6 +23,7 @@
   font-size: 0.9rem;
   line-height: 1.7;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  text-align: center;
 }
 
 .gainage-policy__content h2,
