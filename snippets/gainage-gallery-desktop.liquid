@@ -6,25 +6,29 @@
 
 <div class="gainage-gallery-desktop" data-gallery>
   <!-- Carousel track -->
-  <div class="gainage-gallery-desktop__track">
-    {%- for media in product.media -%}
-      {%- if media.media_type == 'image' -%}
-        <div class="gainage-gallery-desktop__slide">
-          <img
-            src="{{ media | image_url: width: 1200 }}"
-            srcset="{{ media | image_url: width: 800 }} 800w,
-                    {{ media | image_url: width: 1000 }} 1000w,
-                    {{ media | image_url: width: 1200 }} 1200w,
-                    {{ media | image_url: width: 1500 }} 1500w"
-            sizes="50vw"
-            alt="{{ media.alt | escape | default: product.title }}"
-            width="1200"
-            height="{{ 1200 | divided_by: media.aspect_ratio | round }}"
-            loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
-          >
-        </div>
-      {%- endif -%}
-    {%- endfor -%}
+  <div class="gainage-gallery-desktop__track-wrapper" data-gallery-wrapper
+    style="aspect-ratio: {{ product.media.first.aspect_ratio }};">
+    <div class="gainage-gallery-desktop__track">
+      {%- for media in product.media -%}
+        {%- if media.media_type == 'image' -%}
+          <div class="gainage-gallery-desktop__slide"
+            data-aspect-ratio="{{ media.aspect_ratio }}">
+            <img
+              src="{{ media | image_url: width: 1200 }}"
+              srcset="{{ media | image_url: width: 800 }} 800w,
+                      {{ media | image_url: width: 1000 }} 1000w,
+                      {{ media | image_url: width: 1200 }} 1200w,
+                      {{ media | image_url: width: 1500 }} 1500w"
+              sizes="50vw"
+              alt="{{ media.alt | escape | default: product.title }}"
+              width="1200"
+              height="{{ 1200 | divided_by: media.aspect_ratio | round }}"
+              loading="{% if forloop.first %}eager{% else %}lazy{% endif %}"
+            >
+          </div>
+        {%- endif -%}
+      {%- endfor -%}
+    </div>
   </div>
 
   {%- if product.media.size > 1 -%}
