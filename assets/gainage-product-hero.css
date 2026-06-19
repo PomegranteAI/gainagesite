@@ -6,7 +6,7 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 40px;
-  padding: 0 var(--g-margin-mobile) var(--g-margin-mobile);
+  padding: var(--g-margin-mobile);
 }
 
 /* Gallery */
