@@ -4,9 +4,9 @@
 
 .gainage-policy {
   padding: var(--g-margin-desktop) var(--g-margin-mobile);
-  max-width: 800px;
+  max-width: 700px;
   margin: 0 auto;
-  transform: translateX(calc(-1 * var(--g-sidebar-width) / 2));
+  margin-left: max(var(--g-sidebar-width), calc(50% - 350px + var(--g-sidebar-width) / 2));
 }
 
 .gainage-policy__title {
@@ -23,7 +23,7 @@
   font-size: 0.9rem;
   line-height: 1.7;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-  text-align: left;
+  text-align: left !important;
 }
 
 .gainage-policy__content h2,
