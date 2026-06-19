@@ -59,8 +59,8 @@
     <!-- Secondary nav -->
     <nav class="gainage-sidebar__nav gainage-sidebar__nav--secondary">
       <button type="button" class="gainage-sidebar__link gainage-sidebar__search g-body" data-search-toggle aria-expanded="false" aria-controls="gainage-search-panel">SEARCH</button>
-      <a href="/pages/shipping-policy" class="gainage-sidebar__link g-body">SHIPPING POLICY</a>
-      <a href="/pages/terms-of-service" class="gainage-sidebar__link g-body">TERMS OF SERVICE</a>
+      <a href="{{ shop.policies.shipping_policy.url }}" class="gainage-sidebar__link g-body">SHIPPING POLICY</a>
+      <a href="{{ shop.policies.terms_of_service.url }}" class="gainage-sidebar__link g-body">TERMS OF SERVICE</a>
       <a href="/account" class="gainage-sidebar__link g-body">ACCOUNT</a>
       {%- if section.settings.instagram_url != blank -%}
         <a href="{{ section.settings.instagram_url }}" class="gainage-sidebar__link gainage-sidebar__social" target="_blank" rel="noopener noreferrer" aria-label="Instagram">
