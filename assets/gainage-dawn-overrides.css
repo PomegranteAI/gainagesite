@@ -123,7 +123,10 @@
 /* Policy pages — Shopify built-in template */
 .shopify-policy__container {
   max-width: 700px;
-  margin: 40px auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  margin-right: auto;
+  margin-left: max(var(--g-sidebar-width), calc((var(--g-sidebar-width) + 100vw) / 2 - 350px));
   padding: 0 20px;
 }
 
