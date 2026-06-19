@@ -83,10 +83,17 @@
   background: none;
   border: none;
   outline: none;
+  box-shadow: none;
   color: var(--g-color-text);
   font-size: 0.75rem;
   letter-spacing: 0.06em;
   font-family: var(--g-font-body);
+}
+
+.gainage-footer__input:focus {
+  border: none;
+  outline: none;
+  box-shadow: none;
 }
 
 .gainage-footer__input::placeholder {
