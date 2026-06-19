@@ -81,12 +81,12 @@
   <div class="gainage-footer__bottom">
     <div class="gainage-footer__region">
       {%- form 'localization', class: 'gainage-footer__localization' -%}
-        <p class="gainage-footer__region-label g-body">Country/region</p>
+        <p class="gainage-footer__region-label g-body">Currency</p>
         <div class="gainage-footer__select-wrap">
-          <select name="country_code" class="gainage-footer__select g-body" onchange="this.form.submit()">
-            {%- for country in localization.available_countries -%}
-              <option value="{{ country.iso_code }}"{% if country.iso_code == localization.country.iso_code %} selected{% endif %}>
-                {{ country.name }} | {{ country.currency.iso_code }} {{ country.currency.symbol }}
+          <select name="currency_code" class="gainage-footer__select g-body" onchange="this.form.submit()">
+            {%- for currency in localization.available_currencies -%}
+              <option value="{{ currency.iso_code }}"{% if currency.iso_code == localization.currency.iso_code %} selected{% endif %}>
+                {{ currency.iso_code }} {{ currency.symbol }}
               </option>
             {%- endfor -%}
           </select>
