@@ -80,9 +80,16 @@
   display: flex;
   gap: 8px;
   margin-top: 8px;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+
+.gainage-gallery-desktop__thumbs::-webkit-scrollbar {
+  display: none;
 }
 
 .gainage-gallery-desktop__thumb {
+  flex-shrink: 0;
   width: 80px;
   height: auto;
   background: none;
